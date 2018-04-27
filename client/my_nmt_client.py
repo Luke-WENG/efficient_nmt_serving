@@ -58,40 +58,40 @@ def translate(stub, model_name, tokens, timeout=5.0):
   return stub.Predict.future(request, timeout)
 
 def candidates_from_file(file_name):
-	"""Retrieve tokens from txt file
+    """Retrieve tokens from txt file
 
-	Args:
-	  file_name: Absolute file path
+    Args:
+      file_name: Absolute file path
 
-	Returns:
-	  A list of tokens
-	"""
-	tokens = []
-	with open(file_name, 'r') as f:
-		for lines in f:
-			token = lines.split(' ')
-      if '\n' in token[-1]:
-        token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
-			tokens.append(token)
-	return tokens
+    Returns:
+      A list of tokens
+    """
+    tokens = []
+    with open(file_name, 'r') as f:
+        for lines in f:
+            token = lines.split(' ')
+        if '\n' in token[-1]:
+            token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
+            tokens.append(token)
+    return tokens
 
 def references_from_file(file_name):
-	"""Retrieve tokens from txt file
+    """Retrieve tokens from txt file
 
-	Args:
-	  file_name: Absolute file path
+    Args:
+      file_name: Absolute file path
 
-	Returns:
-	  A list of list of tokens
-	"""
-	tokens = []
-	with open(file_name, 'r') as f:
-		for lines in f:
-			token = lines.split(' ')
-      if '\n' in token[-1]:
-        token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
-			tokens.append([token])
-	return tokens
+    Returns:
+      A list of list of tokens
+    """
+    tokens = []
+    with open(file_name, 'r') as f:
+        for lines in f:
+            token = lines.split(' ')
+        if '\n' in token[-1]:
+            token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
+            tokens.append([token])
+    return tokens
 
 def main():
   parser = argparse.ArgumentParser(description="Translation client example")

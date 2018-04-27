@@ -57,40 +57,40 @@ def translate(stub, model_name, tokens, timeout=5.0):
   return stub.Predict.future(request, timeout)
 
 def candidates_from_file(file_name):
-	"""Retrieve tokens from txt file
+    """Retrieve tokens from txt file
 
-	Args:
-	  file_name: Absolute file path
+    Args:
+      file_name: Absolute file path
 
-	Returns:
-	  A list of tokens
-	"""
-	tokens = []
-	with open(file_name, 'r') as f:
-		for lines in f:
-			token = lines.split(' ')
-			if '\n' in token[-1]:
-				token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
-			tokens.append(token)
-	return tokens
+    Returns:
+      A list of tokens
+    """
+    tokens = []
+    with open(file_name, 'r') as f:
+        for lines in f:
+            token = lines.split(' ')
+            if '\n' in token[-1]:
+                token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
+            tokens.append(token)
+    return tokens
 
 def references_from_file(file_name):
-	"""Retrieve tokens from txt file
+    """Retrieve tokens from txt file
 
-	Args:
-	  file_name: Absolute file path
+    Args:
+      file_name: Absolute file path
 
-	Returns:
-	  A list of list of tokens
-	"""
-	tokens = []
-	with open(file_name, 'r') as f:
-		for lines in f:
-			token = lines.split(' ')
-			if '\n' in token[-1]:
-				token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
-			tokens.append([token])
-	return tokens
+    Returns:
+      A list of list of tokens
+    """
+    tokens = []
+    with open(file_name, 'r') as f:
+        for lines in f:
+            token = lines.split(' ')
+            if '\n' in token[-1]:
+                token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
+            tokens.append([token])
+    return tokens
 
 def main():
   parser = argparse.ArgumentParser(description="Translation client example")
@@ -135,14 +135,24 @@ def main():
   results = []
   for tokens, future in zip(batch_tokens, futures):
     query_start_time = time.time()
-    redis_result = redis_connect.hget(tokens, args.model_name) # try to get redis's result first
+    # query redis first
+    redis_key_string = []
+    for item in tokens:
+        redis_key_string = redis_key_string + item + ' '
+    redis_result = redis_connect.hget(redis_key_string, args.model_name) # try to get redis's result first
     if redis_result == None:
-    	result = parse_translation_result(future.result())
-    	redis_connect.hset(tokens, args.model_name, result) # save the results into redis
-    	redis_connect.expire(tokens, 600) # key expires after 10 minutes
+        result = parse_translation_result(future.result())
+        # save the results into redis
+        redis_val_string = []
+        for item in result:
+            redis_val_string = redis_val_string + item + ' '
+        redis_connect.hset(redis_key_string, args.model_name, redis_val_string) 
+        redis_connect.expire(redis_key_string, 600) # key expires after 10 minutes
     else: # change string like , into list
-    	result = redis_result[1:-1].split("'") # remove '[' and ']' at the beginning and the end
-    	filter(lambda a: a!= '' and a!=',', result) # remove '' and ''
+        result = redis_result[1:-1].split("'") # remove '[' and ']' at the beginning and the end 
+        result = filter(lambda a: a!= '' and a!=',', result) # remove '' and ''
+        for item in result:
+            if item[0] == '\\' and 
     results.append(result)
     print("{} \n=> {}".format(" ".join(tokens), " ".join(result)))
     print("### Latency: %.4f ms" % ((time.time()-query_start_time)*1000))
