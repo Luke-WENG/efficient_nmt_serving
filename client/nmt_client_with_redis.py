@@ -151,8 +151,6 @@ def main():
     else: # change string like , into list
         result = redis_result[1:-1].split("'") # remove '[' and ']' at the beginning and the end 
         result = filter(lambda a: a!= '' and a!=',', result) # remove '' and ''
-        for item in result:
-            if item[0] == '\\' and 
     results.append(result)
     print("{} \n=> {}".format(" ".join(tokens), " ".join(result)))
     print("### Latency: %.4f ms" % ((time.time()-query_start_time)*1000))
