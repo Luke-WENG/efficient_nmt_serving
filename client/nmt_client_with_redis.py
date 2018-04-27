@@ -149,8 +149,7 @@ def main():
         redis_connect.hset(redis_key_string, args.model_name, redis_val_string) 
         redis_connect.expire(redis_key_string, 600) # key expires after 10 minutes
     else: # change string like , into list
-        result = redis_result[1:-1].split("'") # remove '[' and ']' at the beginning and the end 
-        result = filter(lambda a: a!= '' and a!=',', result) # remove '' and ''
+        result = redis_result.split() # turn sentences into lists 
     results.append(result)
     print("{} \n=> {}".format(" ".join(tokens), " ".join(result)))
     print("### Latency: %.4f ms" % ((time.time()-query_start_time)*1000))
