@@ -1,0 +1,497 @@
+# baseline
+## 3 sentences
+```
+ubuntu@ubuntu:~/efficient_nmt_serving/client$ python my_nmt_client.py --host=192.168.56.101 --port=9000 --model_name=aver_ende --timeout=1000 --src=3-src-test.txt --tgt=3-tgt-test.txt
+# From Beginning: 1.5819 ms
+Orlando Bloom and Miranda Kerr still love each other
+=> ▁Komfort abel ▁und ▁komfortabel .
+### Latency: 7792.9308 ms
+Actors Orlando Bloom and Model Miranda Kerr want to go their separate ways .
+=> ▁Die ▁neue n ▁und ▁neue n ▁A - Z en tra le ▁sind ▁mit ▁den ▁neue n ▁A - Z en tra le ▁und ▁den ▁neue n ▁A - Z en tra le ▁ausgestattet .
+### Latency: 8628.6922 ms
+However , in an interview , Bloom has said that he and Kerr still love each other .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Dusche ▁und ▁WC .
+### Latency: 8788.5680 ms
+# Total Latency: 25210.5088 ms
+/usr/local/lib/python2.7/dist-packages/nltk/translate/bleu_score.py:490: UserWarning:
+Corpus/Sentence contains 0 counts of 2-gram overlaps.
+BLEU scores might be undesirable; use SmoothingFunction().
+  warnings.warn(_msg)
+Corpus Bleu Value: 43.472087
+```
+
+```
+ubuntu@ubuntu:~/efficient_nmt_serving/client$ python my_nmt_client.py --host=192.168.56.101 --port=9000 --model_name=aver_ende --timeout=1000 --src=3-src-test.txt --tgt=3-tgt-test.txt
+# From Beginning: 1.4379 ms
+Orlando Bloom and Miranda Kerr still love each other
+=> ▁Komfort abel ▁und ▁komfortabel .
+### Latency: 6110.8730 ms
+Actors Orlando Bloom and Model Miranda Kerr want to go their separate ways .
+=> ▁Die ▁neue n ▁und ▁neue n ▁A - Z en tra le ▁sind ▁mit ▁den ▁neue n ▁A - Z en tra le ▁und ▁den ▁neue n ▁A - Z en tra le ▁ausgestattet .
+### Latency: 8665.1890 ms
+However , in an interview , Bloom has said that he and Kerr still love each other .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Dusche ▁und ▁WC .
+### Latency: 8690.0861 ms
+# Total Latency: 23466.5370 ms
+/usr/local/lib/python2.7/dist-packages/nltk/translate/bleu_score.py:490: UserWarning:
+Corpus/Sentence contains 0 counts of 2-gram overlaps.
+BLEU scores might be undesirable; use SmoothingFunction().
+  warnings.warn(_msg)
+Corpus Bleu Value: 43.869134
+```
+
+```
+ubuntu@ubuntu:~/efficient_nmt_serving/client$ python my_nmt_client.py --host=192.168.56.101 --port=9000 --model_name=aver_ende --timeout=1000 --src=3-src-test.txt --tgt=3-tgt-test.txt
+# From Beginning: 1.2879 ms
+Orlando Bloom and Miranda Kerr still love each other
+=> ▁Komfort abel ▁und ▁komfortabel .
+### Latency: 6022.1040 ms
+Actors Orlando Bloom and Model Miranda Kerr want to go their separate ways .
+=> ▁Die ▁neue n ▁und ▁neue n ▁A - Z en tra le ▁sind ▁mit ▁den ▁neue n ▁A - Z en tra le ▁und ▁den ▁neue n ▁A - Z en tra le ▁ausgestattet .
+### Latency: 8622.1781 ms
+However , in an interview , Bloom has said that he and Kerr still love each other .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Dusche ▁und ▁WC .
+### Latency: 8698.9651 ms
+# Total Latency: 23343.4598 ms
+/usr/local/lib/python2.7/dist-packages/nltk/translate/bleu_score.py:490: UserWarning:
+Corpus/Sentence contains 0 counts of 2-gram overlaps.
+BLEU scores might be undesirable; use SmoothingFunction().
+  warnings.warn(_msg)
+Corpus Bleu Value: 43.869134
+```
+
+## 10 sentences
+```
+ubuntu@ubuntu:~/efficient_nmt_serving/client$ python my_nmt_client.py --host=192.168.56.101 --port=9000 --model_name=aver_ende --timeout=100 # Acceptable BLEU: 48.93, but longer latency
+# From Beginning: 15.6200 ms
+Orlando Bloom and Miranda Kerr still love each other
+=> ▁Komfort abel ▁und ▁komfortabel .
+### Latency: 22063.9122 ms
+Actors Orlando Bloom and Model Miranda Kerr want to go their separate ways .
+=> ▁Die ▁neue n ▁und ▁neue n ▁A - Z en tra le ▁sind ▁mit ▁den ▁neue n ▁A - Z en tra le ▁und ▁den ▁neue n ▁A - Z en tra le ▁ausgestattet .
+### Latency: 16319.4599 ms
+However , in an interview , Bloom has said that he and Kerr still love each other .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Dusche ▁und ▁WC .
+### Latency: 15213.0570 ms
+Miranda Kerr and Orlando Bloom are parents to two-year-old Flynn .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 0.6831 ms
+Actor Orlando Bloom announced his separation from his wife , supermodel Miranda Kerr .
+=> ▁In ▁jedem ▁Zimmer ▁gibt ▁es ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 228.8351 ms
+In an interview with US journalist Katie Couric , which is to be broadcast on Friday (local time), Bloom said , &quot; sometimes life doesn &apos;t go exactly as we plan or hope for &quot; .
+=> ▁A ußerdem ▁sind ▁sie ▁in ▁der ▁Lage , ▁die ▁ Flexibilität ▁und ▁ Flexibilität ▁der ▁Zimmer ▁zu ▁nutzen .
+### Latency: 0.7911 ms
+He and Kerr still love each other , emphasised the 36-year-old .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.6039 ms
+&quot; We &apos;re going to support one another and love each other as parents to Flynn &quot; .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.6409 ms
+Kerr and Bloom have been married since 2010 . Their son Flynn was born in 2011 .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Badewanne .
+### Latency: 0.5040 ms
+Jet makers feud over seat width with big orders at stak
+=> ▁Die ▁Zimmer ▁sind ▁komfortabel ▁und ▁komfortabel ▁eingerichtet .
+### Latency: 0.5012 ms
+# Total Latency: 53830.2412 ms
+/usr/local/lib/python2.7/dist-packages/nltk/translate/bleu_score.py:490: UserWarning:
+Corpus/Sentence contains 0 counts of 2-gram overlaps.
+BLEU scores might be undesirable; use SmoothingFunction().
+  warnings.warn(_msg)
+Corpus Bleu Value: 48.927074
+```
+
+```
+ubuntu@ubuntu:~/efficient_nmt_serving/client$ python my_nmt_client.py --host=192.168.56.101 --port=9000 --model_name=aver_ende --timeout=100 # Acceptable BLEU: 48.93, but longer latency
+# From Beginning: 3.8018 ms
+Orlando Bloom and Miranda Kerr still love each other
+=> ▁Komfort abel ▁und ▁komfortabel .
+### Latency: 20256.6710 ms
+Actors Orlando Bloom and Model Miranda Kerr want to go their separate ways .
+=> ▁Die ▁neue n ▁und ▁neue n ▁A - Z en tra le ▁sind ▁mit ▁den ▁neue n ▁A - Z en tra le ▁und ▁den ▁neue n ▁A - Z en tra le ▁ausgestattet .
+### Latency: 17313.0190 ms
+However , in an interview , Bloom has said that he and Kerr still love each other .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Dusche ▁und ▁WC .
+### Latency: 15042.8741 ms
+Miranda Kerr and Orlando Bloom are parents to two-year-old Flynn .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 0.4671 ms
+Actor Orlando Bloom announced his separation from his wife , supermodel Miranda Kerr .
+=> ▁In ▁jedem ▁Zimmer ▁gibt ▁es ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 0.4861 ms
+In an interview with US journalist Katie Couric , which is to be broadcast on Friday (local time), Bloom said , &quot; sometimes life doesn &apos;t go exactly as we plan or hope for &quot; .
+=> ▁A ußerdem ▁sind ▁sie ▁in ▁der ▁Lage , ▁die ▁ Flexibilität ▁und ▁ Flexibilität ▁der ▁Zimmer ▁zu ▁nutzen .
+### Latency: 0.3321 ms
+He and Kerr still love each other , emphasised the 36-year-old .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.2840 ms
+&quot; We &apos;re going to support one another and love each other as parents to Flynn &quot; .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.6380 ms
+Kerr and Bloom have been married since 2010 . Their son Flynn was born in 2011 .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Badewanne .
+### Latency: 0.5441 ms
+Jet makers feud over seat width with big orders at stak
+=> ▁Die ▁Zimmer ▁sind ▁komfortabel ▁und ▁komfortabel ▁eingerichtet .
+### Latency: 0.4189 ms
+# Total Latency: 52616.8129 ms
+/usr/local/lib/python2.7/dist-packages/nltk/translate/bleu_score.py:490: UserWarning:
+Corpus/Sentence contains 0 counts of 2-gram overlaps.
+BLEU scores might be undesirable; use SmoothingFunction().
+  warnings.warn(_msg)
+Corpus Bleu Value: 48.927074
+```
+
+```
+ubuntu@ubuntu:~/efficient_nmt_serving/client$ python my_nmt_client.py --host=192.168.56.101 --port=9000 --model_name=aver_ende --timeout=100 # Acceptable BLEU: 48.93, but longer latency
+# From Beginning: 3.9539 ms
+Orlando Bloom and Miranda Kerr still love each other
+=> ▁Komfort abel ▁und ▁komfortabel .
+### Latency: 23139.3940 ms
+Actors Orlando Bloom and Model Miranda Kerr want to go their separate ways .
+=> ▁Die ▁neue n ▁und ▁neue n ▁A - Z en tra le ▁sind ▁mit ▁den ▁neue n ▁A - Z en tra le ▁und ▁den ▁neue n ▁A - Z en tra le ▁ausgestattet .
+### Latency: 15672.2660 ms
+However , in an interview , Bloom has said that he and Kerr still love each other .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Dusche ▁und ▁WC .
+### Latency: 15189.8670 ms
+Miranda Kerr and Orlando Bloom are parents to two-year-old Flynn .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 0.4320 ms
+Actor Orlando Bloom announced his separation from his wife , supermodel Miranda Kerr .
+=> ▁In ▁jedem ▁Zimmer ▁gibt ▁es ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 0.3641 ms
+In an interview with US journalist Katie Couric , which is to be broadcast on Friday (local time), Bloom said , &quot; sometimes life doesn &apos;t go exactly as we plan or hope for &quot; .
+=> ▁A ußerdem ▁sind ▁sie ▁in ▁der ▁Lage , ▁die ▁ Flexibilität ▁und ▁ Flexibilität ▁der ▁Zimmer ▁zu ▁nutzen .
+### Latency: 0.3290 ms
+He and Kerr still love each other , emphasised the 36-year-old .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.2789 ms
+&quot; We &apos;re going to support one another and love each other as parents to Flynn &quot; .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.6511 ms
+Kerr and Bloom have been married since 2010 . Their son Flynn was born in 2011 .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Badewanne .
+### Latency: 0.6199 ms
+Jet makers feud over seat width with big orders at stak
+=> ▁Die ▁Zimmer ▁sind ▁komfortabel ▁und ▁komfortabel ▁eingerichtet .
+### Latency: 0.4811 ms
+# Total Latency: 54005.6469 ms
+/usr/local/lib/python2.7/dist-packages/nltk/translate/bleu_score.py:490: UserWarning:
+Corpus/Sentence contains 0 counts of 2-gram overlaps.
+BLEU scores might be undesirable; use SmoothingFunction().
+  warnings.warn(_msg)
+Corpus Bleu Value: 48.927074
+```
+
+## 100 sentences
+```
+ubuntu@ubuntu:~/efficient_nmt_serving/client$ python my_nmt_client.py --host=192.168.56.101 --port=9000 --model_name=aver_ende --timeout=1000 --src=100-src-test.txt --tgt=100-tgt-test.txt
+# From Beginning: 100.6100 ms
+Orlando Bloom and Miranda Kerr still love each other
+=> ▁Komfort abel ▁und ▁komfortabel .
+### Latency: 309554.0600 ms
+Actors Orlando Bloom and Model Miranda Kerr want to go their separate ways .
+=> ▁Die ▁neue n ▁und ▁neue n ▁A - Z en tra le ▁sind ▁mit ▁den ▁neue n ▁A - Z en tra le ▁und ▁den ▁neue n ▁A - Z en tra le ▁ausgestattet .
+### Latency: 0.6502 ms
+However , in an interview , Bloom has said that he and Kerr still love each other .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Dusche ▁und ▁WC .
+### Latency: 0.6301 ms
+Miranda Kerr and Orlando Bloom are parents to two-year-old Flynn .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 0.3359 ms
+Actor Orlando Bloom announced his separation from his wife , supermodel Miranda Kerr .
+=> ▁In ▁jedem ▁Zimmer ▁gibt ▁es ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 0.5829 ms
+In an interview with US journalist Katie Couric , which is to be broadcast on Friday (local time), Bloom said , &quot; sometimes life doesn &apos;t go exactly as we plan or hope for &quot; .
+=> ▁A ußerdem ▁sind ▁sie ▁in ▁der ▁Lage , ▁die ▁ Flexibilität ▁und ▁ Flexibilität ▁der ▁Zimmer ▁zu ▁nutzen .
+### Latency: 0.6809 ms
+He and Kerr still love each other , emphasised the 36-year-old .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.4771 ms
+&quot; We &apos;re going to support one another and love each other as parents to Flynn &quot; .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.7632 ms
+Kerr and Bloom have been married since 2010 . Their son Flynn was born in 2011 .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Badewanne .
+### Latency: 0.5460 ms
+Jet makers feud over seat width with big orders at stake
+=> ▁Die ▁Zimmer ▁sind ▁komfortabel ▁und ▁komfortabel ▁eingerichtet .
+### Latency: 0.4468 ms
+A row has flared up between leading plane makers over the width of tourist-class seats on long-distance flights , setting the tone for a bitter confrontation at this month &apos;s Dubai Airshow .
+=> ▁Die ▁A r range ments ▁verfüg en ▁über ▁eine ▁neue ▁A r rang ement - F r üh stück s - F r üh stück s - F r üh stück s - K ü che .
+### Latency: 0.5491 ms
+The dispute focuses on the width of seats provided on long-haul flights for economy passengers - not always the ones most courted by airlines , but whose allocated space holds the key to efficiency claims for the latest jets offered by Airbus SAS and Boeing Co .
+=> ▁Aus ge stattet ▁mit ▁den ▁neue n ▁A r range ments ▁und ▁den ▁neue n ▁A r range ments .
+### Latency: 0.7000 ms
+Airbus this week called for an industry standard that would provide for a seat at least 18 inches (46 cm) wide in economy cabins , but its U.S. arch-rival Boeing says it should be for airlines to decide .
+=> ▁In ▁jedem ▁Zimmer ▁gibt ▁es ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.7749 ms
+The dispute comes as plane makers vie to sell ever-larger versions of their twin-engined long-distance aircraft , with potentially record orders expected at the November 17-21 event .
+=> ▁Aus ge stattet ▁mit ▁den ▁neue n ▁A r range ments ▁und ▁den ▁neue n ▁A r range ments .
+### Latency: 0.6611 ms
+How the back of the plane is laid out - particularly whether seating is 9 or 10 abreast - is central to the economic performance claims being made for new &quot; mini-jumbo &quot; jet designs .
+=> ▁A ußerdem ▁verfüg en ▁sie ▁über ▁eine ▁Minibar ▁mit ▁Kaffee - ▁und ▁Tee zu bereitung smöglichkeiten .
+### Latency: 0.8731 ms
+Boeing says its revamped &quot; 777X &quot; will hold 406 people based on economy seats more than 17 inches wide and set out 10 in each row .
+=> ▁Aus ge stattet ▁mit ▁den ▁neue n ▁A r z n ei en ▁und ▁den ▁neue n ▁A r z n ei en .
+### Latency: 25220.8991 ms
+Airbus says the competing version of its A350 will carry 350 people in 18-inch-wide economy seat laid out 9 abreast .
+=> ▁In ▁der ▁neue n ▁A - Z e ile ▁gibt ▁es ▁eine ▁neue ▁A - Z e ile ▁mit ▁neue n ▁A - Z en tra le .
+### Latency: 43246.7070 ms
+Plane giants often trade blows on technical matters through advertising in the trade press .
+=> ▁Die ▁neue n ▁A - Z en tra le ▁verfüg en ▁über ▁eine ▁neue ▁A - Z en tra le ▁und ▁eine ▁neue ▁A - Z en tra le .
+### Latency: 25533.1440 ms
+Now , Airbus is appealing directly to the public ahead of the Dubai Airshow , where the 777X is expected to dominate with more than 100 orders .
+=> ▁In ▁jedem ▁Zimmer ▁gibt ▁es ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 29369.9591 ms
+It recently previewed what may be the start of a new ad war by showing financiers a slide illustrating three people squashed together at a restaurant , titled &quot; Would You Accept This ? &quot;
+=> ▁In ▁jedem ▁Zimmer ▁gibt ▁es ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 26367.5098 ms
+&quot; Boeing is proposing long-distance flying in seats narrower than regional turbo-props , &quot; said Airbus sales chief John Leahy .
+=> ▁Die ▁neue n ▁und ▁neue n ▁A r range ments ▁verfüg en ▁über ▁neue ▁A r rang ement - ▁und ▁A r range ments .
+### Latency: 23760.7231 ms
+As diets change , people get bigger but plane seating has not radically changed .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Dusche ▁und ▁WC .
+### Latency: 15331.5270 ms
+Between the early 1970s , when the Boeing 747 jumbo defined modern long-haul travel , and the turn of the century , the weight of the average American 40- to 49-year-old male increased by 10 per cent , according to U.S. Health Department Data .
+=> ▁Die ▁A - Z en tra le ▁verfügt ▁über ▁eine ▁neue ▁A - Z en tra le , ▁die ▁sich ▁mit ▁der ▁neue n ▁A - Z en tra le ▁und ▁der ▁neue n ▁A - Z en tra le ▁aus zeichnet .
+### Latency: 26682.9438 ms
+The waist of the average 21st-century American male is 39.7 inches , according to U.S. health statistics .
+=> ▁Aus ge stattet ▁mit ▁einer ▁Kaffee - ▁und ▁Tee zu bereitung s technologie .
+### Latency: 29102.3228 ms
+Airbus says its rival is sticking to a seat concept from the 1950s , when the average girth of the newly christened &quot; jet set &quot; was narrower .
+=> ▁Aus ge stattet ▁mit ▁einer ▁Kaffee - ▁und ▁Tee - E mp fang s - F r üh stück s - F r üh stück s - F r üh stück s buffet .
+### Latency: 30270.1991 ms
+Airbus says it has commissioned research suggesting an extra inch in seat width improves sleep quality by 53 per cent .
+=> ▁Die ▁e del sten ▁und ▁komfortabel sten ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad .
+### Latency: 17413.9719 ms
+Boeing disputes Airbus &apos;s figures on seat measurements and says it is not up to manufacturers to step into decisions on how airlines balance fares and facilities .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 0.5488 ms
+It also says research shows cabin experience depends on more than the width of a seat .
+=> ▁A ußerdem ▁verfüg en ▁sie ▁über ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.5760 ms
+&quot; It really comes down to providing flexibility to airlines and allowing them to do the things that they believe they need to do to be successful , &quot; said Boeing cabins expert Kent Craver .
+=> ▁ en er neu t ▁und ▁mit ▁neue n ▁A r range ments ▁ausgestattet .
+### Latency: 0.6750 ms
+They don &apos;t want us to dictate to them what makes them profitable .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.6371 ms
+They know their business better than anyone else .
+=> ▁Die ▁neue n ▁und ▁neue n ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad .
+### Latency: 0.6719 ms
+For flyers it is about more elbow room , but for suppliers it is increasingly an issue that could affect earnings .
+=> ▁A ußerdem ▁verfüg en ▁alle ▁Zimmer ▁über ▁ein ▁eigene s ▁Bad .
+### Latency: 0.5660 ms
+Behind the dispute is a race for plane orders with at least $ 700-billion of estimated business at list prices in coming decades , enough to tip the scales of U.S. and European exports .
+=> ▁ en f yl ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail ▁e - mail .
+### Latency: 0.6661 ms
+As Reuters first reported in July , seat layout is exactly what drives the battle between the latest jets .
+=> ▁Die ▁neue n ▁A r range ments ▁verfüg en ▁über ▁eine ▁neue ▁A r range ments ▁und ▁sind ▁mit ▁den ▁neue n ▁A r range ments ▁ausgestattet .
+### Latency: 0.7350 ms
+Both Airbus and Boeing claim 20 per cent better efficiency per seat in their latest twin-engined long-haul designs than the market leader in that segment , the 365-seat Boeing 777-300ER .
+=> ▁Die ▁neue n ▁und ▁neue n ▁A r range ments ▁verfüg en ▁über ▁eine ▁neue ▁A r rang ement - Konfiguration ▁und ▁sind ▁mit ▁den ▁neue n ▁A r range ments ▁ausgestattet .
+### Latency: 0.5510 ms
+Boeing &apos;s performance claims depend in part on comparing the 10-abreast 777X with an original 9-abreast 777 design .
+=> ▁Die ▁neue n ▁A r range ments ▁verfüg en ▁über ▁eine ▁neue ▁A r rang ement - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s automat ik .
+### Latency: 0.5460 ms
+The gain in unit costs is blunted compared with 10-abreast now in use .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Dusche ▁und ▁WC .
+### Latency: 0.6289 ms
+&quot; The reason Boeing are doing this is to cram more seats in to make their plane more competitive with our products , &quot; said Kevin Keniston , head of passenger comfort at Europe &apos;s Airbus .
+=> ▁Die ▁neue n ▁A r range ments ▁verfüg en ▁über ▁eine ▁neue ▁A r rang ement - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s automat ik .
+### Latency: 0.7432 ms
+On the other hand , analysts say full 10-seat-per-row cabins for existing 777s suggest many passengers are voting for the denser layout , which may go hand in hand with cheaper fares .
+=> ▁A ußerdem ▁verfüg en ▁alle ▁Zimmer ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Badewanne .
+### Latency: 0.6161 ms
+&quot; Eighteen inches in seat width would be great for passengers , but the reality is that from a business point of the Airbus proposal is driven by the threat of the 777 , &quot; said cabin interiors expert Mary Kirby , founder and editor of the Runway Girl Network .
+=> ▁A ußerdem ▁verfüg en ▁sie ▁über ▁eine ▁Minibar , ▁die ▁sich ▁in ▁jedem ▁Zimmer ▁befindet .
+### Latency: 0.4880 ms
+Airbus and Boeing do not supply seats but offer a catalogue of suppliers for airlines to choose from .
+=> ▁In ▁jedem ▁Zimmer ▁gibt ▁es ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 0.7281 ms
+Globe-trotting jet sellers even carry tape measures to check on competing layouts .
+=> ▁Die ▁e del sten ▁und ▁modernst en ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad .
+### Latency: 0.5698 ms
+While boasting comfort , all builders also offer jets with high-density layouts for low-cost airlines and regional travel .
+=> ▁Die ▁e del sten ▁und ▁modernst en ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad .
+### Latency: 0.6099 ms
+Airbus offers a 10-abreast A350 but says it has not yet sold it .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Dusche ▁und ▁WC .
+### Latency: 0.6459 ms
+Until recently , Airbus was stressing the need for more cabin customization by offering wider aisle seats on some of its jets .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Minibar , ▁eine ▁Kaffee maschine ▁und ▁eine ▁Minibar .
+### Latency: 0.6678 ms
+Without the support of the only other maker of large modern jets , experts say its call for a new industry standard is unlikely to fly , but could distract from a wave of 777X sales .
+=> ▁Aus ge stattet ▁mit ▁einer ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.5960 ms
+The FAA is easing restrictions on the use of electronic gadgets on airplanes - though chatting on cellphones will still be prohibited .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.5131 ms
+Warplanes attack a store of Russian missiles in the port city of Latakia , an official says .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Badewanne ▁und ▁Dusche .
+### Latency: 0.6661 ms
+It &apos;s an apparent continuation of Israel &apos;s campaign to keep arms from proliferating in the Mideast .
+=> ▁Aus ge stattet ▁mit ▁einer ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.4950 ms
+A federal appeals court blocks a judge &apos;s ruling that the NYPD &apos;s controversial tactic discriminates against minorities .
+=> ▁In ▁der ▁neue n ▁A r rang ement - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s buffet .
+### Latency: 0.4880 ms
+Nearly 100 African migrants hoping to travel to Algeria die of thirst after their two trucks break down in the middle of the Sahara .
+=> ▁Die ▁neue n ▁A r z n ei en ▁sind ▁in ▁der ▁neue n ▁A r z n ei ▁A r z n ei ▁A r z n ei en ▁und ▁A r z n ei en ▁der ▁A r z n ei en .
+### Latency: 0.4518 ms
+Experts say violence that left 14 adults and seven children dead is nothing more than random chance , not a sign of growing violence in America .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 0.2851 ms
+Rather than being rattled by the U.S. government shutdown , investors kept their focus on what probably matters more: the Federal Reserve .
+=> ▁Aus ge stattet ▁mit ▁einer ▁Kaffee - ▁und ▁Tee zu bereitung s technologie .
+### Latency: 0.7010 ms
+The California woman plans to challenge what may be a first-of-its-kind citation , saying the Internet-connected eyewear makes navigation easier .
+=> ▁Aus ge stattet ▁mit ▁einer ▁Kaffee - ▁und ▁Tee zu bereitung s technologie .
+### Latency: 0.7398 ms
+Police say they have a video that appears to show Mayor Rob Ford smoking a crack pipe .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Badewanne .
+### Latency: 0.6170 ms
+Even close allies keep things from one another - and work every angle to find out what &apos;s being held back .
+=> ▁Aus ge stattet ▁mit ▁Kaffee - ▁und ▁Tee zu bereitung smöglichkeiten .
+### Latency: 0.7949 ms
+The Vatican wants to know how Catholic parishes around the globe handle sensitive issues like contraception , divorce and gay couples .
+=> ▁Aus ge stattet ▁mit ▁einer ▁Kaffee - ▁und ▁Tee zu bereitung s technologie .
+### Latency: 0.7610 ms
+Persons seriously injured following collision
+=> ▁ . .
+### Latency: 0.6921 ms
+Early on Friday afternoon , two car drivers were seriously injured in a head-on collision on Landesstraße 44 (a rural road).
+=> ▁Aus ge stattet ▁mit ▁einer ▁Viel zahl ▁an ▁neue n ▁Features ▁und ▁neue n ▁Features .
+### Latency: 0.6781 ms
+The police completely blocked off the road immediately , but initially could not make much comment on the cause of the accident .
+=> ▁Aus ge stattet ▁mit ▁einer ▁praktisch en ▁und ▁praktisch en ▁Ausstattung .
+### Latency: 0.6521 ms
+However , they did mention that there were various witness statements that first had to be assessed .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Badewanne .
+### Latency: 0.6142 ms
+What is certain is that the 19-year-old female driver of a VW Golf was driving in the direction of Revensdorf and the 38-year-old man from Gettorf came towards her in his Hyundai .
+=> ▁A ußerdem ▁verfüg en ▁sie ▁über ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.5069 ms
+The two vehicles collided , whereby the woman was so severely stuck that it took the fire service almost half an hour to free her from the vehicle wreckage .
+=> ▁In ▁jedem ▁Zimmer ▁gibt ▁es ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 0.5209 ms
+Initially the actual cause of the accident remained unclear .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.5491 ms
+Both unfortunate parties were taken to nearby hospitals .
+=> ▁Die ▁neue n ▁und ▁neue n ▁A - Z en tra le ▁sind ▁in ▁der ▁neue n ▁A - Z en tra le ▁verfügbar .
+### Latency: 0.5832 ms
+The road remained fully blocked off for around two hours .
+=> ▁Die ▁neue n ▁und ▁neue n ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad .
+### Latency: 0.4609 ms
+Fire crews called to rescue lost puppy after she got stuck 50ft above the ground on precarious ledge in a quarry
+=> ▁Aus ge stattet ▁mit ▁modernst er ▁Technik ▁und ▁modernst er ▁Technik .
+### Latency: 0.4001 ms
+Cocker spaniel Ruby had run off after she was in a minor road crash
+=> ▁Komfort abel ▁und ▁komfortabel ▁ausgestattet .
+### Latency: 0.3021 ms
+She was spotted three days later by a dog walker trapped in the quarry
+=> ▁Aus ge stattet ▁mit ▁modernst er ▁Technik ▁und ▁modernst er ▁Technik .
+### Latency: 0.2840 ms
+Firefighters abseil down cliff face to pluck the dog from certain death
+=> ▁Aus ge stattet ▁mit ▁modernst er ▁Technik ▁und ▁modernst er ▁Technik .
+### Latency: 0.3910 ms
+A puppy had a lucky escape after fire crews were called to lift her to safety when she somehow got herself stuck 50ft up on a precarious cliff ledge .
+=> ▁In ▁jedem ▁Zimmer ▁gibt ▁es ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 0.3550 ms
+Nine month-old cocker spaniel Ruby had run off after being involved in a road crash on Sunday afternoon and survived three days alone before being rescued from a quarry on Wednesday .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 0.5441 ms
+Her owners Scott Alderson , 25 , and his girlfriend Becky Hall , 20 , were at Flappit Quarry in Denholme , West Yorkshire , to be reunited with Ruby and have thanked West Yorkshire Fire and Rescue Service .
+=> ▁In ▁jedem ▁Zimmer ▁gibt ▁es ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 0.4771 ms
+They had searched frantically for their missing dog and posted appeals on social networking sites after she had ran into the quarry following the minor accident .
+=> ▁Die ▁neue n ▁A r range ments ▁verfüg en ▁über ▁eine ▁neue ▁A r rang ement - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s automat ik .
+### Latency: 0.7432 ms
+At around 2.15pm on Wednesday , an eagle-eyed dog walker spotted Ruby on the ledge in the quarry , stranded 50ft up .
+=> ▁A ußerdem ▁verfüg en ▁sie ▁über ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.5751 ms
+A Technical Rescue Team from Cleckheaton Fire Station rushed to the scene and abseiled down to rescue Ruby and used a pet tube to transport her up the cliff .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.4818 ms
+Specialist Technical Rescue Officer Andy Clayton said: &apos; She was in a precarious situation .
+=> ▁In ▁der ▁neue n ▁A / C - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s - F r üh stück s buffet .
+### Latency: 0.4880 ms
+She was right in the middle of the cliff face - 50ft from the top and bottom .
+=> ▁Aus ge stattet ▁mit ▁einer ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 0.5469 ms
+She did not move a muscle during the rescue - she was frozen solid .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Badewanne .
+### Latency: 0.4499 ms
+But she is fine now .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Dusche ▁und ▁WC .
+### Latency: 0.4580 ms
+She was eating biscuits afterwards .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad .
+### Latency: 0.3951 ms
+This was a very unusual call-out .
+=> ▁Die ▁Zimmer ▁sind ▁sehr ▁gut ▁ausgestattet .
+### Latency: 0.3870 ms
+The fact that the dog was spotted is unbelievable .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Dusche ▁und ▁WC .
+### Latency: 0.3879 ms
+Specialist Technical Rescue Officer Peter Lau said: &quot; Ruby had a very lucky escape . &quot;
+=> ▁Die ▁neue n ▁A - Z en tre n ▁verfüg en ▁über ▁eine ▁neue ▁A - Z en tra le ▁und ▁eine ▁neue ▁A - Z en tra le .
+### Latency: 0.5341 ms
+The potential was there that she could have been very seriously injured or worse .
+=> ▁Die ▁neue n ▁A - Z en tra le ▁verfüg en ▁über ▁eine ▁neue ▁A - Z en tra le ▁und ▁eine ▁neue ▁A - Z en tra le .
+### Latency: 0.3352 ms
+Ruby was taken to the vets for a check-up and was found to be fine other than exhaustion and dehydration .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad ▁mit ▁Badewanne .
+### Latency: 1.0650 ms
+Miss Hall , from Halifax , West Yorkshire , said: &quot; Watching the rescue was terrifying . &quot;
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Kaffee - ▁und ▁Tee zu bereitung s möglichkeit .
+### Latency: 1.0328 ms
+I could not believe that she was up there in the first place .
+=> ▁Die ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad .
+### Latency: 0.5209 ms
+It was amazing to get her back in our arms .
+=> ▁Die ▁Zimmer ▁sind ▁komfortabel ▁eingerichtet ▁und ▁verfüg en ▁über ▁eine ▁Minibar .
+### Latency: 0.4570 ms
+The vet said that if she became too exhausted and collapsed she would probably have fallen .
+=> ▁Die ▁e del sten ▁und ▁komfortabel sten ▁Zimmer ▁verfüg en ▁über ▁ein ▁eigene s ▁Bad .
+### Latency: 0.5169 ms
+The firefighters were amazing .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Minibar .
+### Latency: 0.5090 ms
+It was really daring what they did .
+=> ▁In ▁jedem ▁Zimmer ▁gibt ▁es ▁eine ▁Minibar ▁mit ▁Kaffee ▁und ▁Tee .
+### Latency: 0.5090 ms
+We are just so grateful and every single one of them was absolutely tremendous .
+=> ▁A ußerdem ▁verfüg en ▁alle ▁Zimmer ▁über ▁ein ▁eigene s ▁Bad .
+### Latency: 0.4210 ms
+Mr Alderson , from Keighley , added: &quot; We were scared that she might fall but she stayed there . &quot;
+=> ▁Die ▁neue n ▁A - Z en tra le ▁sind ▁mit ▁den ▁neue n ▁A - Z en tra les ▁ausgestattet .
+### Latency: 1.8780 ms
+The firefighters were brilliant .
+=> ▁Die ▁neue n ▁Zimmer ▁verfüg en ▁über ▁eine ▁Minibar .
+### Latency: 0.7901 ms
+I just can &apos;t believe where she was .
+=> ▁In ▁jedem ▁Zimmer ▁gibt ▁es ▁eine ▁Kaffee maschine .
+### Latency: 0.7029 ms
+Report: Obama campaign considered dumping Biden for Hillary Clinton
+=> ▁Komfort abel ▁und ▁komfortabel .
+### Latency: 0.9170 ms
+President Barack Obama &apos;s closest advisers secretly considered replacing Vice President Joe Biden with Hillary Clinton on the 2012 ticket , according to the New York Times .
+=> ▁Aus ge stattet ▁mit ▁der ▁neue n ▁A - Z e ile ▁und ▁der ▁neue n ▁A - Z e ile .
+### Latency: 0.8881 ms
+The revelation is the most notable bombshell from Mark Halperin and John Heilemann &apos;s heavily anticipated 2012 campaign tome , &quot; Double Down: Game Change 2012 . &quot;
+=> ▁Aus ge stattet ▁mit ▁den ▁neue n ▁A r range ments ▁und ▁den ▁neue n ▁A r range ments .
+### Latency: 0.8409 ms
+The Times obtained a copy of the forthcoming book and reported Thursday evening that the President &apos;s top aides conducted &quot; extensive group-sessions and polling in late 2011 &quot; to gauge whether the dumping Biden could help bolster Obama &apos;s waning re-election hopes
+=> ▁Aus ge stattet ▁mit ▁modernst er ▁Technik ▁und ▁modernst er ▁Technik .
+### Latency: 0.8271 ms
+# Total Latency: 601918.3352 ms
+/usr/local/lib/python2.7/dist-packages/nltk/translate/bleu_score.py:490: UserWarning:
+Corpus/Sentence contains 0 counts of 2-gram overlaps.
+BLEU scores might be undesirable; use SmoothingFunction().
+  warnings.warn(_msg)
+Corpus Bleu Value: 42.416065
+```

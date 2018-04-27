@@ -1,5 +1,3 @@
-# my_nmt_client.py
-"""Example of a translation client."""
 
 from __future__ import print_function
 
@@ -7,6 +5,7 @@ import argparse
 
 import tensorflow as tf
 import time
+import redis
 
 from grpc.beta import implementations
 
@@ -106,11 +105,15 @@ def main():
   parser.add_argument("--src", default="10-src-test.txt",
                       help="source text file path: ../data/???, default: 10-src-test.txt")
   parser.add_argument("--tgt", default="10-tgt-test.txt",
-                      help="target text file path: ../data/???, default: 10-tgt-test.txt")
+                      help="target text file path: ../data/???, default: 10-tgt-test.txt, input 'None' or 'none' to stop")
   args = parser.parse_args()
 
   channel = implementations.insecure_channel(args.host, args.port)
   stub = prediction_service_pb2.beta_create_PredictionService_stub(channel)
+
+  # redis 
+  redis_pool = redis.ConnectionPool(host='localhost', port=6379)
+  redis_connect = redis.Redis(connection_pool=redis_pool)
 
   src_file = "../data/"+args.src
   batch_tokens = candidates_from_file(src_file)
@@ -126,18 +129,26 @@ def main():
     future = translate(stub, args.model_name, tokens, timeout=args.timeout)
     futures.append(future)
 
+  # Start Querying
   print("# From Beginning: %.4f ms" % ((time.time()-project_start_time)*1000))
   results_start_time = time.time()
   results = []
   for tokens, future in zip(batch_tokens, futures):
     query_start_time = time.time()
-    result = parse_translation_result(future.result())
+    redis_result = redis_connect.hget(tokens, args.model_name) # try to get redis's result first
+    if redis_result == None:
+    	result = parse_translation_result(future.result())
+    	redis_connect.hset(tokens, args.model_name, result) # save the results into redis
+    	redis_connect.expire(tokens, 600) # key expires after 10 minutes
+    else: # change string like , into list
+    	result = redis_result[1:-1].split("'") # remove '[' and ']' at the beginning and the end
+    	filter(lambda a: a!= '' and a!=',', result) # remove '' and ''
     results.append(result)
     print("{} \n=> {}".format(" ".join(tokens), " ".join(result)))
     print("### Latency: %.4f ms" % ((time.time()-query_start_time)*1000))
-  print("# Total Latency: %.4f ms" % ((time.time()-results_start_time)*1000))
+  print("\n# Total Latency: %.4f ms" % ((time.time()-results_start_time)*1000))
 
-  if args.tgt:
+  if args.tgt!="None" and args.tgt!='none':
     tgt_file = "../data/"+args.tgt
     refer_tokens = references_from_file(tgt_file)
     corpus_bleu_value = corpus_bleu(refer_tokens, results) * 100

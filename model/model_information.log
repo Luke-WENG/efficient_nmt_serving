@@ -1,0 +1,608 @@
+# model information
+# https://research.googleblog.com/2017/08/transformer-novel-neural-network.html
+tensor_name:  global_step , tensor_shape:  [] , tensor_type:  <dtype: 'int64'>
+tensor_name:  optim/beta1_power , tensor_shape:  [] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/beta2_power , tensor_shape:  [] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/learning_rate , tensor_shape:  [] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/dense/bias/Adam , tensor_shape:  [32001] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/dense/bias/Adam_1 , tensor_shape:  [32001] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/dense/kernel/Adam , tensor_shape:  [512, 32001] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/dense/kernel/Adam_1 , tensor_shape:  [512, 32001] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/ffn/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/ffn/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/ffn/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/ffn/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/ffn/conv1d/bias/Adam , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/ffn/conv1d/bias/Adam_1 , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/ffn/conv1d/kernel/Adam , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/ffn/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/ffn/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/ffn/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/ffn/conv1d_1/kernel/Adam , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/ffn/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/masked_multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/masked_multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/masked_multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/masked_multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/masked_multi_head/conv1d/bias/Adam , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/masked_multi_head/conv1d/bias/Adam_1 , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/masked_multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/masked_multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/masked_multi_head/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/masked_multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/masked_multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/masked_multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/multi_head/conv1d/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/multi_head/conv1d/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/multi_head/conv1d_1/bias/Adam , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/multi_head/conv1d_2/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/multi_head/conv1d_2/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/multi_head/conv1d_2/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_0/multi_head/conv1d_2/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/ffn/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/ffn/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/ffn/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/ffn/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/ffn/conv1d/bias/Adam , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/ffn/conv1d/bias/Adam_1 , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/ffn/conv1d/kernel/Adam , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/ffn/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/ffn/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/ffn/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/ffn/conv1d_1/kernel/Adam , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/ffn/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/masked_multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/masked_multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/masked_multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/masked_multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/masked_multi_head/conv1d/bias/Adam , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/masked_multi_head/conv1d/bias/Adam_1 , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/masked_multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/masked_multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/masked_multi_head/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/masked_multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/masked_multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/masked_multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/multi_head/conv1d/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/multi_head/conv1d/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/multi_head/conv1d_1/bias/Adam , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/multi_head/conv1d_2/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/multi_head/conv1d_2/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/multi_head/conv1d_2/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_1/multi_head/conv1d_2/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/ffn/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/ffn/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/ffn/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/ffn/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/ffn/conv1d/bias/Adam , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/ffn/conv1d/bias/Adam_1 , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/ffn/conv1d/kernel/Adam , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/ffn/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/ffn/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/ffn/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/ffn/conv1d_1/kernel/Adam , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/ffn/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/masked_multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/masked_multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/masked_multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/masked_multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/masked_multi_head/conv1d/bias/Adam , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/masked_multi_head/conv1d/bias/Adam_1 , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/masked_multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/masked_multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/masked_multi_head/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/masked_multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/masked_multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/masked_multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/multi_head/conv1d/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/multi_head/conv1d/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/multi_head/conv1d_1/bias/Adam , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/multi_head/conv1d_2/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/multi_head/conv1d_2/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/multi_head/conv1d_2/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_2/multi_head/conv1d_2/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/ffn/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/ffn/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/ffn/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/ffn/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/ffn/conv1d/bias/Adam , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/ffn/conv1d/bias/Adam_1 , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/ffn/conv1d/kernel/Adam , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/ffn/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/ffn/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/ffn/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/ffn/conv1d_1/kernel/Adam , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/ffn/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/masked_multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/masked_multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/masked_multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/masked_multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/masked_multi_head/conv1d/bias/Adam , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/masked_multi_head/conv1d/bias/Adam_1 , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/masked_multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/masked_multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/masked_multi_head/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/masked_multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/masked_multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/masked_multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/multi_head/conv1d/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/multi_head/conv1d/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/multi_head/conv1d_1/bias/Adam , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/multi_head/conv1d_2/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/multi_head/conv1d_2/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/multi_head/conv1d_2/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_3/multi_head/conv1d_2/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/ffn/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/ffn/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/ffn/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/ffn/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/ffn/conv1d/bias/Adam , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/ffn/conv1d/bias/Adam_1 , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/ffn/conv1d/kernel/Adam , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/ffn/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/ffn/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/ffn/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/ffn/conv1d_1/kernel/Adam , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/ffn/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/masked_multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/masked_multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/masked_multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/masked_multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/masked_multi_head/conv1d/bias/Adam , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/masked_multi_head/conv1d/bias/Adam_1 , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/masked_multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/masked_multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/masked_multi_head/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/masked_multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/masked_multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/masked_multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/multi_head/conv1d/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/multi_head/conv1d/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/multi_head/conv1d_1/bias/Adam , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/multi_head/conv1d_2/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/multi_head/conv1d_2/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/multi_head/conv1d_2/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_4/multi_head/conv1d_2/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/ffn/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/ffn/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/ffn/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/ffn/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/ffn/conv1d/bias/Adam , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/ffn/conv1d/bias/Adam_1 , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/ffn/conv1d/kernel/Adam , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/ffn/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/ffn/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/ffn/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/ffn/conv1d_1/kernel/Adam , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/ffn/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/masked_multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/masked_multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/masked_multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/masked_multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/masked_multi_head/conv1d/bias/Adam , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/masked_multi_head/conv1d/bias/Adam_1 , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/masked_multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/masked_multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/masked_multi_head/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/masked_multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/masked_multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/masked_multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/multi_head/conv1d/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/multi_head/conv1d/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/multi_head/conv1d_1/bias/Adam , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/multi_head/conv1d_2/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/multi_head/conv1d_2/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/multi_head/conv1d_2/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/layer_5/multi_head/conv1d_2/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/w_embs/Adam , tensor_shape:  [32001, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/decoder/w_embs/Adam_1 , tensor_shape:  [32001, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/ffn/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/ffn/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/ffn/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/ffn/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/ffn/conv1d/bias/Adam , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/ffn/conv1d/bias/Adam_1 , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/ffn/conv1d/kernel/Adam , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/ffn/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/ffn/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/ffn/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/ffn/conv1d_1/kernel/Adam , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/ffn/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/multi_head/conv1d/bias/Adam , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/multi_head/conv1d/bias/Adam_1 , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/multi_head/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_0/multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/ffn/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/ffn/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/ffn/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/ffn/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/ffn/conv1d/bias/Adam , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/ffn/conv1d/bias/Adam_1 , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/ffn/conv1d/kernel/Adam , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/ffn/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/ffn/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/ffn/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/ffn/conv1d_1/kernel/Adam , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/ffn/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/multi_head/conv1d/bias/Adam , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/multi_head/conv1d/bias/Adam_1 , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/multi_head/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_1/multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/ffn/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/ffn/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/ffn/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/ffn/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/ffn/conv1d/bias/Adam , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/ffn/conv1d/bias/Adam_1 , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/ffn/conv1d/kernel/Adam , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/ffn/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/ffn/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/ffn/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/ffn/conv1d_1/kernel/Adam , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/ffn/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/multi_head/conv1d/bias/Adam , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/multi_head/conv1d/bias/Adam_1 , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/multi_head/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_2/multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/ffn/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/ffn/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/ffn/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/ffn/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/ffn/conv1d/bias/Adam , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/ffn/conv1d/bias/Adam_1 , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/ffn/conv1d/kernel/Adam , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/ffn/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/ffn/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/ffn/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/ffn/conv1d_1/kernel/Adam , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/ffn/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/multi_head/conv1d/bias/Adam , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/multi_head/conv1d/bias/Adam_1 , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/multi_head/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_3/multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/ffn/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/ffn/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/ffn/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/ffn/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/ffn/conv1d/bias/Adam , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/ffn/conv1d/bias/Adam_1 , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/ffn/conv1d/kernel/Adam , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/ffn/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/ffn/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/ffn/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/ffn/conv1d_1/kernel/Adam , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/ffn/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/multi_head/conv1d/bias/Adam , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/multi_head/conv1d/bias/Adam_1 , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/multi_head/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_4/multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/ffn/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/ffn/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/ffn/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/ffn/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/ffn/conv1d/bias/Adam , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/ffn/conv1d/bias/Adam_1 , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/ffn/conv1d/kernel/Adam , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/ffn/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/ffn/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/ffn/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/ffn/conv1d_1/kernel/Adam , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/ffn/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/multi_head/LayerNorm/beta/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/multi_head/LayerNorm/beta/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/multi_head/LayerNorm/gamma/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/multi_head/LayerNorm/gamma/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/multi_head/conv1d/bias/Adam , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/multi_head/conv1d/bias/Adam_1 , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/multi_head/conv1d/kernel/Adam , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/multi_head/conv1d/kernel/Adam_1 , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/multi_head/conv1d_1/bias/Adam , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/multi_head/conv1d_1/bias/Adam_1 , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/multi_head/conv1d_1/kernel/Adam , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/layer_5/multi_head/conv1d_1/kernel/Adam_1 , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/w_embs/Adam , tensor_shape:  [32001, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  optim/transformer/encoder/w_embs/Adam_1 , tensor_shape:  [32001, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/dense/bias , tensor_shape:  [32001] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/dense/kernel , tensor_shape:  [512, 32001] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/ffn/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/ffn/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/ffn/conv1d/bias , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/ffn/conv1d/kernel , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/ffn/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/ffn/conv1d_1/kernel , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/masked_multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/masked_multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/masked_multi_head/conv1d/bias , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/masked_multi_head/conv1d/kernel , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/masked_multi_head/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/masked_multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/multi_head/conv1d/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/multi_head/conv1d/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/multi_head/conv1d_1/bias , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/multi_head/conv1d_2/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_0/multi_head/conv1d_2/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/ffn/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/ffn/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/ffn/conv1d/bias , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/ffn/conv1d/kernel , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/ffn/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/ffn/conv1d_1/kernel , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/masked_multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/masked_multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/masked_multi_head/conv1d/bias , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/masked_multi_head/conv1d/kernel , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/masked_multi_head/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/masked_multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/multi_head/conv1d/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/multi_head/conv1d/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/multi_head/conv1d_1/bias , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/multi_head/conv1d_2/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_1/multi_head/conv1d_2/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/ffn/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/ffn/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/ffn/conv1d/bias , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/ffn/conv1d/kernel , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/ffn/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/ffn/conv1d_1/kernel , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/masked_multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/masked_multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/masked_multi_head/conv1d/bias , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/masked_multi_head/conv1d/kernel , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/masked_multi_head/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/masked_multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/multi_head/conv1d/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/multi_head/conv1d/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/multi_head/conv1d_1/bias , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/multi_head/conv1d_2/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_2/multi_head/conv1d_2/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/ffn/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/ffn/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/ffn/conv1d/bias , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/ffn/conv1d/kernel , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/ffn/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/ffn/conv1d_1/kernel , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/masked_multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/masked_multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/masked_multi_head/conv1d/bias , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/masked_multi_head/conv1d/kernel , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/masked_multi_head/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/masked_multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/multi_head/conv1d/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/multi_head/conv1d/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/multi_head/conv1d_1/bias , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/multi_head/conv1d_2/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_3/multi_head/conv1d_2/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/ffn/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/ffn/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/ffn/conv1d/bias , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/ffn/conv1d/kernel , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/ffn/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/ffn/conv1d_1/kernel , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/masked_multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/masked_multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/masked_multi_head/conv1d/bias , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/masked_multi_head/conv1d/kernel , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/masked_multi_head/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/masked_multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/multi_head/conv1d/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/multi_head/conv1d/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/multi_head/conv1d_1/bias , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/multi_head/conv1d_2/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_4/multi_head/conv1d_2/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/ffn/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/ffn/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/ffn/conv1d/bias , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/ffn/conv1d/kernel , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/ffn/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/ffn/conv1d_1/kernel , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/masked_multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/masked_multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/masked_multi_head/conv1d/bias , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/masked_multi_head/conv1d/kernel , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/masked_multi_head/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/masked_multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/multi_head/conv1d/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/multi_head/conv1d/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/multi_head/conv1d_1/bias , tensor_shape:  [1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 1024] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/multi_head/conv1d_2/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/layer_5/multi_head/conv1d_2/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/decoder/w_embs , tensor_shape:  [32001, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_0/ffn/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_0/ffn/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_0/ffn/conv1d/bias , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_0/ffn/conv1d/kernel , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_0/ffn/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_0/ffn/conv1d_1/kernel , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_0/multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_0/multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_0/multi_head/conv1d/bias , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_0/multi_head/conv1d/kernel , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_0/multi_head/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_0/multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_1/ffn/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_1/ffn/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_1/ffn/conv1d/bias , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_1/ffn/conv1d/kernel , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_1/ffn/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_1/ffn/conv1d_1/kernel , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_1/multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_1/multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_1/multi_head/conv1d/bias , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_1/multi_head/conv1d/kernel , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_1/multi_head/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_1/multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_2/ffn/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_2/ffn/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_2/ffn/conv1d/bias , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_2/ffn/conv1d/kernel , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_2/ffn/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_2/ffn/conv1d_1/kernel , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_2/multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_2/multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_2/multi_head/conv1d/bias , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_2/multi_head/conv1d/kernel , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_2/multi_head/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_2/multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_3/ffn/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_3/ffn/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_3/ffn/conv1d/bias , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_3/ffn/conv1d/kernel , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_3/ffn/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_3/ffn/conv1d_1/kernel , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_3/multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_3/multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_3/multi_head/conv1d/bias , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_3/multi_head/conv1d/kernel , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_3/multi_head/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_3/multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_4/ffn/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_4/ffn/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_4/ffn/conv1d/bias , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_4/ffn/conv1d/kernel , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_4/ffn/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_4/ffn/conv1d_1/kernel , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_4/multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_4/multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_4/multi_head/conv1d/bias , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_4/multi_head/conv1d/kernel , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_4/multi_head/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_4/multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_5/ffn/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_5/ffn/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_5/ffn/conv1d/bias , tensor_shape:  [2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_5/ffn/conv1d/kernel , tensor_shape:  [1, 512, 2048] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_5/ffn/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_5/ffn/conv1d_1/kernel , tensor_shape:  [1, 2048, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_5/multi_head/LayerNorm/beta , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_5/multi_head/LayerNorm/gamma , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_5/multi_head/conv1d/bias , tensor_shape:  [1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_5/multi_head/conv1d/kernel , tensor_shape:  [1, 512, 1536] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_5/multi_head/conv1d_1/bias , tensor_shape:  [512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/layer_5/multi_head/conv1d_1/kernel , tensor_shape:  [1, 512, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  transformer/encoder/w_embs , tensor_shape:  [32001, 512] , tensor_type:  <dtype: 'float32'>
+tensor_name:  words_per_sec/features_init , tensor_shape:  [] , tensor_type:  <dtype: 'float32'>
+tensor_name:  words_per_sec/labels_init , tensor_shape:  [] , tensor_type:  <dtype: 'float32'>
