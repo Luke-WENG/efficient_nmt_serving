@@ -71,7 +71,7 @@ def candidates_from_file(file_name):
 		for lines in f:
 			token = lines.split(' ')
       if '\n' in token[-1]:
-			 token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
+        token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
 			tokens.append(token)
 	return tokens
 
@@ -89,7 +89,7 @@ def references_from_file(file_name):
 		for lines in f:
 			token = lines.split(' ')
       if '\n' in token[-1]:
-			 token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
+        token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
 			tokens.append([token])
 	return tokens
 
