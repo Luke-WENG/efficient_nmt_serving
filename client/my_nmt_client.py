@@ -6,6 +6,7 @@ from __future__ import print_function
 import argparse
 
 import tensorflow as tf
+import time
 
 from grpc.beta import implementations
 
@@ -100,15 +101,18 @@ def main():
                       help="model server port")
   parser.add_argument("--timeout", type=float, default=10.0,
                       help="request timeout")
+  parser.add_argument("--src", default="10-src-test.txt",
+                      help="source text file path: ../data/???, default: 10-src-test.txt")
+  parser.add_argument("--tgt", default="10-tgt-test.txt",
+                      help="target text file path: ../data/???, default: 10-tgt-test.txt")
   args = parser.parse_args()
 
   channel = implementations.insecure_channel(args.host, args.port)
   stub = prediction_service_pb2.beta_create_PredictionService_stub(channel)
 
-  src_file = "./data/10-src-test.txt"
-  tgt_file = "./data/10-tgt-test.txt"
+  src_file = "../data/"+args.src
   batch_tokens = candidates_from_file(src_file)
-  refer_tokens = references_from_file(tgt_file)
+
   # batch_tokens = [
   #     ["Hello", "world", "!"],
   #     ["My", "name", "is", "John", "."],
@@ -116,17 +120,23 @@ def main():
 
   futures = []
   for tokens in batch_tokens:
+
     future = translate(stub, args.model_name, tokens, timeout=args.timeout)
     futures.append(future)
 
   results = []
   for tokens, future in zip(batch_tokens, futures):
+    start_time = time.time()
     result = parse_translation_result(future.result())
     results.append(result)
-    print("{} \n||| {}".format(" ".join(tokens), " ".join(result)))
+    print("{} \n=> {}".format(" ".join(tokens), " ".join(result)))
+    print("### Latency: %.4f ms" % ((time.time()-start_time)*1000))
 
-  corpus_bleu_value = corpus_bleu(refer_tokens, results) * 100
-  print("Corpus Bleu Value: %f" % corpus_bleu_value)
+  if args.tgt:
+    tgt_file = "../data/"+args.tgt
+    refer_tokens = references_from_file(tgt_file)
+    corpus_bleu_value = corpus_bleu(refer_tokens, results) * 100
+    print("Corpus Bleu Value: %f" % corpus_bleu_value)
 
 
 if __name__ == "__main__":
