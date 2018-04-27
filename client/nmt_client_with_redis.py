@@ -136,14 +136,14 @@ def main():
   for tokens, future in zip(batch_tokens, futures):
     query_start_time = time.time()
     # query redis first
-    redis_key_string = []
+    redis_key_string = ''
     for item in tokens:
         redis_key_string = redis_key_string + item + ' '
     redis_result = redis_connect.hget(redis_key_string, args.model_name) # try to get redis's result first
     if redis_result == None:
         result = parse_translation_result(future.result())
         # save the results into redis
-        redis_val_string = []
+        redis_val_string = ''
         for item in result:
             redis_val_string = redis_val_string + item + ' '
         redis_connect.hset(redis_key_string, args.model_name, redis_val_string) 
