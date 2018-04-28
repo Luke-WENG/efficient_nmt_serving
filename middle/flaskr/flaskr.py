@@ -1,9 +1,16 @@
 from __future__ import print_function
 import sqlite3
+import redis
 import time
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from contextlib import closing
-from web_nmt_client import web_query
+from threading import Timer
+from web_query import web_query
+from web_client_serving import web_client_serving
+
+import sys  
+reload(sys)  
+sys.setdefaultencoding('utf-8') 
 
 DATABASE = './database/flaskr.db'
 DEBUG = True
@@ -24,15 +31,18 @@ def init_db():
 			db.cursor().executescript(f.read())
 		db.commit()
 
-def get_result(query):
-    if len(query) < 1: # empty query
-        return "Invalid Query Input"
-    else:
-        return web_query(query)
+def bat_client_serving():
+    while True:
+        sleep(10)
+
+# def web_client_serving():
+#     while True:
+#         sleep(10)
 
 @app.before_request
 def before_request():
 	g.db = connect_db()
+    g.db.text_factory = str
 
 @app.teardown_request
 def teardown_request(exception):
@@ -52,7 +62,7 @@ def add_entry():
         abort(401)
 
     query_time = time.time()
-    result = get_result(request.form['query'])
+    result = web_query(request.form['query'])
     latency = time.time() - query_time
 
     g.db.execute('INSERT INTO entries (title, query, result) VALUES (?, ?, ?)',
@@ -87,4 +97,11 @@ def logout():
 
 
 if __name__=='__main__':
+    redis_host = 'localhost'
+    redis_port = 6379
+    redis_connect = redis.Redis(host=redis_host, port=redis_port)
+    redis_connect.set('web_user_id', 1000) # starting from 1000, to 9999
+    redis_connect.set('bat_user_id', 1000) # starting from 1000, to 9999
+    Timer(0, web_client_serving, ()).start() # run two queries in parallel
+    Timer(0, bat_client_serving, ()).start()
 	app.run()

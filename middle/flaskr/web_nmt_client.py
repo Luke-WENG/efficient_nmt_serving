@@ -87,7 +87,8 @@ def web_query(query):
 
   batch_tokens = []
   for query_sentence in query.split('\n'):
-    batch_tokens.append(query_sentence.split())
+    batch_token = [str(item) for item in query_sentence.split()]
+    batch_tokens.append(batch_token)
 
   # batch_tokens = [
   #     ["Hello", "world", "!"],
