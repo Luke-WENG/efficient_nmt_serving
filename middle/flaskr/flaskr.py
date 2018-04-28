@@ -4,9 +4,10 @@ import redis
 import time
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from contextlib import closing
-from threading import Timer
+# from threading import Timer
+# from subprocess import call
 from web_query import web_query
-from web_client_serving import web_client_serving
+# from web_client_serving import web_client_serving
 
 import sys  
 reload(sys)  
@@ -31,17 +32,9 @@ def init_db():
 			db.cursor().executescript(f.read())
 		db.commit()
 
-def bat_client_serving():
-    while True:
-        sleep(10)
-
-# def web_client_serving():
-#     while True:
-#         sleep(10)
-
 @app.before_request
 def before_request():
-	g.db = connect_db()
+    g.db = connect_db()
     g.db.text_factory = str
 
 @app.teardown_request
@@ -100,8 +93,8 @@ if __name__=='__main__':
     redis_host = 'localhost'
     redis_port = 6379
     redis_connect = redis.Redis(host=redis_host, port=redis_port)
-    redis_connect.set('web_user_id', 1000) # starting from 1000, to 9999
-    redis_connect.set('bat_user_id', 1000) # starting from 1000, to 9999
-    Timer(0, web_client_serving, ()).start() # run two queries in parallel
-    Timer(0, bat_client_serving, ()).start()
-	app.run()
+    # redis_connect.set('web_user_id', 1000) # starting from 1000, to 9999
+    # redis_connect.set('bat_user_id', 1000) # starting from 1000, to 9999
+    # call('python web_client_serving.py', shell=True) # run two queries in parallel
+    # call('python bat_client_serving.py', shell=True)
+    app.run()

@@ -14,20 +14,22 @@ def web_query(query):
     redis_connect = redis.Redis(connection_pool=redis_pool)
 
     user = 'web_'+str(redis_connect.incr('web_user_id', 1))
-    redis_connect.rpush('web_user_list', user) # round-robin for all web users
     src_list_id = user + "_src" # e.g. "web_1_src"
     tgt_list_id = user + "_tgt" # e.g. "web_1_tgt"
 
     results = []
-    tokens = query.split('\n')
+    tokens = query.split('\r\n') # the '\r' here is important, otherwise the cache won't match.
     length_to_query = len(tokens)
     if length_to_query > 20:
       raise ValueError("Too much sentences in one query. Switch to batching processing")
       # TODO: batch processing
     # check the cache first
-    for item in tokens:
+    tokens_for_loop = tokens[:]
+    for item in tokens_for_loop:
+      # print(str(length_to_query)+repr(item)) # this helps me to debug
       result = redis_connect.hget(item, args_model_name)
       if result == None:
+        # print(str(length_to_query))
         break
       else:
         results.append(result)
@@ -41,10 +43,13 @@ def web_query(query):
       #: unfound data uploaded
       #: then block and wait for results
 
+      # append the user to the web_user_list for help/serve
+      redis_connect.rpush('web_user_list', user) # round-robin for all web users
+      
       #: To retrieve results from Redis
       #: r.rpush(user +'_tgt', "sentence1", "sentence2", "sentence3")
       for i in range(length_to_query):
-        result = r.blpop(tgt_list_id, args_timeout)
+        result = redis_connect.blpop(tgt_list_id, args_timeout)
         if result == None:
             # print "==Error:TimeOut=="
             results.append(" ")

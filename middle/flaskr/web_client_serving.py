@@ -60,7 +60,9 @@ def web_client_serving():
 	args_tgt = None
 	redis_connect = redis.Redis(host=args_host, port=args_redis_port)
 	while True:
-		user_to_serve = redis_connect.blpop('web_user_list') # pick the first user, if none then wait
+		print("Waiting for new users ...")
+		user_to_serve = redis_connect.blpop('web_user_list')[1] # pick the first user, if none then wait
+		print("Serving: "+user_to_serve)
 		src_list_id = user_to_serve + "_src" # e.g. "web_1_src"
 		tgt_list_id = user_to_serve + "_tgt" # e.g. "tgt_1_src"
 
@@ -68,9 +70,12 @@ def web_client_serving():
 		queries = redis_connect.lrange(src_list_id, 0, -1)
 		#: try caching first
 		length_of_queries = len(queries)
-		for item in queries:
+		queries_for_loop = queries[:]
+		for item in queries_for_loop:
+			# print(str(length_of_queries)+repr(item))
 			result = redis_connect.hget(item, args_model_name)
 			if result == None:
+				# print(str(length_of_queries))
 				break
 				# no hope, go to TensorFlow Serving :(
 			else:
@@ -80,11 +85,11 @@ def web_client_serving():
 
 		if length_of_queries > 0:
 			batch_tokens = []
-			for item in queries:
+			for query in queries:
 				batch_token = [str(item) for item in query.split()]
 				batch_tokens.append(batch_token)
 				redis_connect.rpush(tgt_list_id, str(batch_token)) # too good to be true :)
-		print("user: "+user_to_serve+" well served")
+		print("Well served: "+user_to_serve)
 		# #: ready for TensorFlow Serving
 		# futures = []
 		# for tokens in batch_tokens:
@@ -95,3 +100,4 @@ def web_client_serving():
 		# result = " ".join(result_tokens)
 		# redis_connect.rpush(tgt_list_id, result) # for users to retrieve from list
 
+web_client_serving()
