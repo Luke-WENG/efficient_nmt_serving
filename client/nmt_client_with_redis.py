@@ -130,7 +130,7 @@ def main():
     futures.append(future)
 
   # Start Querying
-  print("# Init. and Data Loading: %.4f ms" % ((time.time()-project_start_time)*1000))
+  print("# Initializing and Data Loading: %.4f ms" % ((time.time()-project_start_time)*1000))
   results_start_time = time.time()
   results = []
   for tokens, future in zip(batch_tokens, futures):

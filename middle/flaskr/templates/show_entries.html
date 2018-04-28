@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+      <dl>
+<!--         <dt>Title:
+        <dd><input type=text size=30 name=title> -->
+        <dt>Query:
+        <dd><textarea name=query rows=5 cols=40></textarea>
+        <dd><input type=submit value=Translate!>
+        <h6><div align='right'>powered by TensorFlow and Flask. author: Qizhen WENG</div></h6>
+      </dl>
+    </form>
+  {% endif %}
+  <ul class=entries>
+  {% for entry in entries %}
+    <li><h2>{{ entry.title }}</h2>
+    <li><strong>Query: </strong>{{ entry.query|safe }}
+    <li><strong>Result: </strong>{{ entry.result|safe }}
+  {% else %}
+    <li><em>Unbelievable.  No entries here so far</em>
+  {% endfor %}
+  </ul>
+{% endblock %}
