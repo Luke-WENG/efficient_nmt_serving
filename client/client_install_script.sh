@@ -8,6 +8,8 @@ tar xvzf redis-stable.tar.gz
 cd redis-stable
 make
 make test
+sudo cp src/redis-server /usr/local/bin/
+sudo cp src/redis-cli /usr/local/bin/
 
 ## if test pass, ignore the latter
 ## <ignore>

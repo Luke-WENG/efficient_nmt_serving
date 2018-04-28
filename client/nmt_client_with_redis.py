@@ -112,7 +112,7 @@ def main():
   stub = prediction_service_pb2.beta_create_PredictionService_stub(channel)
 
   # redis 
-  redis_pool = redis.ConnectionPool(host='localhost', port=6379)
+  redis_pool = redis.ConnectionPool(host=args.host, port=6379)
   redis_connect = redis.Redis(connection_pool=redis_pool)
 
   src_file = "../data/"+args.src
@@ -130,7 +130,7 @@ def main():
     futures.append(future)
 
   # Start Querying
-  print("# From Beginning: %.4f ms" % ((time.time()-project_start_time)*1000))
+  print("# Init. and Data Loading: %.4f ms" % ((time.time()-project_start_time)*1000))
   results_start_time = time.time()
   results = []
   for tokens, future in zip(batch_tokens, futures):
@@ -140,6 +140,8 @@ def main():
     for item in tokens:
         redis_key_string = redis_key_string + item + ' '
     redis_result = redis_connect.hget(redis_key_string, args.model_name) # try to get redis's result first
+    # Why not input str(tokens) as key?
+    # Because unicode like \xe could become \\xe in str(), which is hard to recover later.
     if redis_result == None:
         result = parse_translation_result(future.result())
         # save the results into redis
