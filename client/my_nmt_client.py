@@ -70,9 +70,9 @@ def candidates_from_file(file_name):
     with open(file_name, 'r') as f:
         for lines in f:
             token = lines.split(' ')
-        if '\n' in token[-1]:
-            token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
-            tokens.append(token)
+            if '\n' in token[-1]:
+                token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
+                tokens.append(token)
     return tokens
 
 def references_from_file(file_name):
@@ -88,9 +88,9 @@ def references_from_file(file_name):
     with open(file_name, 'r') as f:
         for lines in f:
             token = lines.split(' ')
-        if '\n' in token[-1]:
-            token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
-            tokens.append([token])
+            if '\n' in token[-1]:
+                token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
+                tokens.append([token])
     return tokens
 
 def main():
@@ -101,7 +101,7 @@ def main():
                       help="model server host")
   parser.add_argument("--port", type=int, default=9000,
                       help="model server port")
-  parser.add_argument("--timeout", type=float, default=10.0,
+  parser.add_argument("--timeout", type=float, default=1000000.0,
                       help="request timeout")
   parser.add_argument("--src", default="10-src-test.txt",
                       help="source text file path: ../data/???, default: 10-src-test.txt")
@@ -123,26 +123,26 @@ def main():
   project_start_time = time.time()
   futures = []
   for tokens in batch_tokens:
-    future = translate(stub, args.model_name, tokens, timeout=args.timeout)
-    futures.append(future)
+        future = translate(stub, args.model_name, tokens, timeout=args.timeout)
+        futures.append(future)
 
   print("# From Beginning: %.4f ms" % ((time.time()-project_start_time)*1000))
   results_start_time = time.time()
   results = []
   for tokens, future in zip(batch_tokens, futures):
-    query_start_time = time.time()
-    result = parse_translation_result(future.result())
-    results.append(result)
-    print("{} \n=> {}".format(" ".join(tokens), " ".join(result)))
-    print("### Latency: %.4f ms" % ((time.time()-query_start_time)*1000))
+        query_start_time = time.time()
+        result = parse_translation_result(future.result())
+        results.append(result)
+        print("{} \n=> {}".format(" ".join(tokens), " ".join(result)))
+        print("### Latency: %.4f ms" % ((time.time()-query_start_time)*1000))
   print("# Total Latency: %.4f ms" % ((time.time()-results_start_time)*1000))
 
   if args.tgt:
-    tgt_file = "../data/"+args.tgt
-    refer_tokens = references_from_file(tgt_file)
-    corpus_bleu_value = corpus_bleu(refer_tokens, results) * 100
-    print("Corpus Bleu Value: %f" % corpus_bleu_value)
+        tgt_file = "../data/"+args.tgt
+        refer_tokens = references_from_file(tgt_file)
+        corpus_bleu_value = corpus_bleu(refer_tokens, results) * 100
+        print("Corpus Bleu Value: %f" % corpus_bleu_value)
 
 
 if __name__ == "__main__":
-  main()
+        main()
