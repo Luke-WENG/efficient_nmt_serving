@@ -58,7 +58,12 @@ def web_client_serving():
 	args_timeout = 100
 	args_src = None
 	args_tgt = None
+	# Redis
 	redis_connect = redis.Redis(host=args_host, port=args_redis_port)
+	# TensorFlow Serving
+	channel = implementations.insecure_channel(args.host, args.port)
+	stub = prediction_service_pb2.beta_create_PredictionService_stub(channel)
+	# Looping User Serving
 	while True:
 		print("Waiting for new users ...")
 		user_to_serve = redis_connect.blpop('web_user_list')[1] # pick the first user, if none then wait
@@ -88,13 +93,32 @@ def web_client_serving():
 			for query in queries:
 				batch_token = [str(item) for item in query.split()]
 				batch_tokens.append(batch_token)
-				redis_connect.rpush(tgt_list_id, str(batch_token)) # too good to be true :)
+				# redis_connect.rpush(tgt_list_id, str(batch_token)) # too good to be true :)
+			
+			# batch_tokens = [
+			#     ["Hello", "world", "!"],
+			#     ["My", "name", "is", "John", "."],
+			#     ["I", "live", "on", "the", "West", "coast", "."]]
+
+			#: ready for TensorFlow Serving
+			tf_start_time = time.time()
+			futures = []
+			for tokens in batch_tokens:
+				future = translate(stub, args_model_name, tokens, timeout=args_timeout)
+				futures.append(future)
+			
+			for tokens, future in zip(batch_tokens, futures):
+				result_tokens = parse_translation_result(future.result())
+				#: get results from tensorflow serving
+				#: result_tokens = ["Hallo", "Welt", "!"]
+				query = ' '.join(tokens)
+				result = ' '.join(result)
+				redis_connect.hset(query, args_model_name, result) # cache result
+				redis_connect.expire(query, 1200) # key expires after 20 minutes
+				redis_connect.rpush(tgt_list_id, result) # return to users
+				print(tgt_list_id + '||' + result + "|| Latency: " + str(time.time() - tf_start_time))
 		print("Well served: "+user_to_serve)
-		# #: ready for TensorFlow Serving
-		# futures = []
-		# for tokens in batch_tokens:
-		# 	future = translate(stub, args_model_name, tokens, timeout=args_timeout)
-		# 	futures.append(future)
+
 
 
 		# result = " ".join(result_tokens)
