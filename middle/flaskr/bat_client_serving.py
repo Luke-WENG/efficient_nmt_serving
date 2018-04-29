@@ -60,7 +60,8 @@ def bat_client_serving():
     args_src = None
     args_tgt = None
     # Redis
-    redis_connect = redis.Redis(host=args_host, port=args_redis_port)
+    red0 = redis.Redis(host=args_host, port=args_redis_port, db=0) # for hash caching
+    red1 = redis.Redis(host=args_host, port=args_redis_port, db=1) # for message queue
     # TensorFlow Serving
     channel = implementations.insecure_channel(args_host, args_tf_port)
     stub = prediction_service_pb2.beta_create_PredictionService_stub(channel)
@@ -68,34 +69,34 @@ def bat_client_serving():
     while True:
         try:
             print("Waiting for new users ...")
-            user_to_serve = redis_connect.blpop('bat_user_list')[1] # pick the first user, if none then wait
+            user_to_serve = red1.blpop('bat_user_list')[1] # pick the first user, if none then wait
             print("Serving: "+user_to_serve)
             src_list_id = user_to_serve + "_src" # e.g. "bat_1_src"
             tgt_list_id = user_to_serve + "_tgt" # e.g. "bat_1_tgt"
 
             #: retrieve all queries of this user
-            queries = redis_connect.lrange(src_list_id, 0, args_batch_size-1) # pop args_batch_size queries
-            redis_connect.ltrim(src_list_id, args_batch_size, -1) # then remove them
-            one_more_to_check = redis_connect.lpop(src_list_id)
+            queries = red1.lrange(src_list_id, 0, args_batch_size-1) # pop args_batch_size queries
+            red1.ltrim(src_list_id, args_batch_size, -1) # then remove them
+            one_more_to_check = red1.lpop(src_list_id)
             if one_more_to_check == None:
                 print("\n\n====== Aha! Batch user: " + user_to_serve + " is satisfied. :)")
                 pass # this user is done. 
             else:
-                redis_connect.lpush(src_list_id, one_more_to_check) # put it back :)
-                redis_connect.rpush('bat_user_list', user_to_serve) # add user to the tail of queue
+                red1.lpush(src_list_id, one_more_to_check) # put it back :)
+                red1.rpush('bat_user_list', user_to_serve) # add user to the tail of queue
 
             #: try caching first
             length_of_queries = len(queries)
             queries_for_loop = queries[:]
             for item in queries_for_loop:
                 # print(str(length_of_queries)+repr(item))
-                result = redis_connect.hget(item, args_model_name)
+                result = red0.hget(item, args_model_name)
                 if result == None:
                     # print(str(length_of_queries))
                     break
                     # no hope, go to TensorFlow Serving :(
                 else:
-                    redis_connect.rpush(tgt_list_id, result) # for users to retrieve from list
+                    red1.rpush(tgt_list_id, result) # for users to retrieve from list
                     queries.remove(item)
                     length_of_queries = length_of_queries - 1
 
@@ -104,7 +105,7 @@ def bat_client_serving():
                 for query in queries:
                     batch_token = [str(item) for item in query.split()]
                     batch_tokens.append(batch_token)
-                    # redis_connect.rpush(tgt_list_id, str(batch_token)) # too good to be true :)
+                    # red1.rpush(tgt_list_id, str(batch_token)) # too good to be true :)
                 
                 # batch_tokens = [
                 #     ["Hello", "world", "!"],
@@ -126,18 +127,18 @@ def bat_client_serving():
                     #: result_tokens = ["Hallo", "Welt", "!"]
                     query = ' '.join(tokens)
                     result = ' '.join(result_tokens)
-                    redis_connect.hset(query, args_model_name, result) # cache result
-                    redis_connect.expire(query, 1200) # key expires after 20 minutes
-                    redis_connect.rpush(tgt_list_id, result) # return to users
+                    red0.hset(query, args_model_name, result) # cache result
+                    red0.expire(query, 1200) # key expires after 20 minutes
+                    red1.rpush(tgt_list_id, result) # return to users
                     print(tgt_list_id + '||' + result + "|| Latency: " + str(time.time() - tf_start_time))
             print("Well served: "+user_to_serve)
         except:
-            redis_connect.lpush('bat_user_list', user_to_serve)
+            red1.lpush('bat_user_list', user_to_serve)
             print("Fail to serve: "+user_to_serve)
 
 
 
         # result = " ".join(result_tokens)
-        # redis_connect.rpush(tgt_list_id, result) # for users to retrieve from list
+        # red1.rpush(tgt_list_id, result) # for users to retrieve from list
 
 bat_client_serving()

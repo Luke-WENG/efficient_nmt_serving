@@ -64,11 +64,11 @@ def main():
                       help="target text file path: ../data/???, default: 10-tgt-test.txt")
   args = parser.parse_args()
 
-  redis_pool = redis.ConnectionPool(host=args.host, port=args.redis_port)
-  redis_connect = redis.Redis(connection_pool=redis_pool)
+  redis_pool = redis.ConnectionPool(host=args_host, port=args_redis_port, db=1) # for message queue
+  red1 = redis.Redis(connection_pool=redis_pool)
   
   project_start_time = time.time()
-  user = 'bat_'+str(redis_connect.incr('bat_user_id', 1))
+  user = 'bat_'+str(red1.incr('bat_user_id', 1))
   src_list_id = user + "_src" # e.g. "bat_1_src"
   tgt_list_id = user + "_tgt" # e.g. "bat_1_tgt"
 
@@ -82,22 +82,25 @@ def main():
   # no caching read for batching but storing exists
   batch_size = len(queries)
   for query in queries:
-    redis_connect.rpush(src_list_id, query) # push request to user's own list
+    red1.rpush(src_list_id, query) # push request to user's own list
     #: all data loaded, then wait for processing
 
   # append the user to the bat_user_list for help/serve
-  redis_connect.rpush('bat_user_list', user)
+  red1.rpush('bat_user_list', user)
 
   # results collection
   results = []
   for i in range(batch_size):
-    result = redis_connect.blpop(tgt_list_id, args.timeout)
+    result = red1.blpop(tgt_list_id, args.timeout)
     latency = time.time() - query_start_time
     if result == None:
       results.append(' ') # timeout
     else:
       results.append(result[1])
-    sentence_bleu_score = sentence_bleu(refer_tokens[i], results[i].split()) * 100
+    try:
+      sentence_bleu_score = sentence_bleu(refer_tokens[i], results[i].split()) * 100
+    except:
+      sentence_blue_score = -1 # in case bad things happens
     print("\n==== SENTENCE: %6d ====\n" % i \
           + "{} \n=> {}\n::BLUE SCORE: ".format(queries[i], results[i]) \
           + "%.2f" % sentence_bleu_score \
@@ -108,7 +111,10 @@ def main():
   results_tokens = []
   for result in results:
     results_tokens.append(result.split())
-  corpus_bleu_score = corpus_bleu(refer_tokens, results_tokens) * 100
+  try:
+    corpus_bleu_score = corpus_bleu(refer_tokens, results_tokens) * 100
+  except:
+    corpus_bleu_score = -1 # in case of failure
   print("\n\n==== ENDS: %6d SENTENCES====" % batch_size)
   print("CORPUS BLEU SCORE: %.2f" % corpus_bleu_score + " for file: " + args.src)
 

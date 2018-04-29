@@ -82,8 +82,8 @@ def web_query(query):
 
 
   # redis 
-  redis_pool = redis.ConnectionPool(host=args_host, port=args_Redis_port)
-  redis_connect = redis.Redis(connection_pool=redis_pool)
+  redis_pool = redis.ConnectionPool(host=args_host, port=args_Redis_port, db=0) # for hash caching
+  red0 = redis.Redis(connection_pool=redis_pool)
 
   batch_tokens = []
   for query_sentence in query.split('\n'):
@@ -112,7 +112,7 @@ def web_query(query):
     redis_key_string = ''
     for item in tokens:
         redis_key_string = redis_key_string + item + ' '
-    redis_result = redis_connect.hget(redis_key_string, args_model_name) # try to get redis's result first
+    redis_result = red0.hget(redis_key_string, args_model_name) # try to get redis's result first
     # Why not input str(tokens) as key?
     # Because unicode like \xe could become \\xe in str(), which is hard to recover later.
     if redis_result == None:
@@ -121,8 +121,8 @@ def web_query(query):
         redis_val_string = ''
         for item in result:
             redis_val_string = redis_val_string + item + ' '
-        redis_connect.hset(redis_key_string, args_model_name, redis_val_string) 
-        redis_connect.expire(redis_key_string, 600) # key expires after 10 minutes
+        red0.hset(redis_key_string, args_model_name, redis_val_string) 
+        red0.expire(redis_key_string, 600) # key expires after 10 minutes
     else: # change string like , into list
         result = redis_result.split() # turn sentences into lists 
     # results.append(result)

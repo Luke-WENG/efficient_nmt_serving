@@ -10,10 +10,11 @@ args_model_name = "aver_ende"
 def web_query(query):
   # input: multiple-line sentences
   if len(query) > 0: # for non-empty inputs
-    redis_pool = redis.ConnectionPool(host=args_host, port=args_redis_port)
-    redis_connect = redis.Redis(connection_pool=redis_pool)
+    redis_pool = redis.ConnectionPool(host=args_host, port=args_redis_port, db=1) # for message queue
+    red1 = redis.Redis(connection_pool=redis_pool)
+    red0 = redis.Redis(host=args_host, port=args_redis_port, db=0) # for hash caching
 
-    user = 'web_'+str(redis_connect.incr('web_user_id', 1))
+    user = 'web_'+str(red1.incr('web_user_id', 1))
     src_list_id = user + "_src" # e.g. "web_1_src"
     tgt_list_id = user + "_tgt" # e.g. "web_1_tgt"
 
@@ -27,7 +28,7 @@ def web_query(query):
     tokens_for_loop = tokens[:]
     for item in tokens_for_loop:
       # print(str(length_to_query)+repr(item)) # this helps me to debug
-      result = redis_connect.hget(item, args_model_name)
+      result = red0.hget(item, args_model_name)
       if result == None:
         # print(str(length_to_query))
         break
@@ -39,17 +40,17 @@ def web_query(query):
     # if caching cannot solve the query
     if length_to_query > 0:
       for item in tokens:
-        redis_connect.rpush(src_list_id, item)
+        red1.rpush(src_list_id, item)
       #: unfound data uploaded
       #: then block and wait for results
 
       # append the user to the web_user_list for help/serve
-      redis_connect.rpush('web_user_list', user) # round-robin for all web users
+      red1.rpush('web_user_list', user) # round-robin for all web users
       
       #: To retrieve results from Redis
       #: r.rpush(user +'_tgt', "sentence1", "sentence2", "sentence3")
       for i in range(length_to_query):
-        result = redis_connect.blpop(tgt_list_id, args_timeout)
+        result = red1.blpop(tgt_list_id, args_timeout)
         if result == None:
             # print "==Error:TimeOut=="
             results.append(" ")
@@ -59,9 +60,9 @@ def web_query(query):
 
     output = '\n'.join(results)
     #: remove the first user named as var `user` from 'web_user_list'
-    redis_connect.delete(src_list_id)
-    redis_connect.delete(tgt_list_id)
-    # redis_connect.lrem('web_user_list', user, 1)
+    red1.delete(src_list_id)
+    red1.delete(tgt_list_id)
+    # red1.lrem('web_user_list', user, 1)
     return output # multiple-line sentences    
 
   else:

@@ -112,8 +112,8 @@ def main():
   stub = prediction_service_pb2.beta_create_PredictionService_stub(channel)
 
   # redis 
-  redis_pool = redis.ConnectionPool(host=args.host, port=6379)
-  redis_connect = redis.Redis(connection_pool=redis_pool)
+  redis_pool = redis.ConnectionPool(host=args.host, port=6379, db=0)
+  red0 = redis.Redis(connection_pool=redis_pool)
 
   src_file = "../data/"+args.src
   batch_tokens = candidates_from_file(src_file)
@@ -139,7 +139,7 @@ def main():
     redis_key_string = ''
     for item in tokens:
         redis_key_string = redis_key_string + item + ' '
-    redis_result = redis_connect.hget(redis_key_string, args.model_name) # try to get redis's result first
+    redis_result = red0.hget(redis_key_string, args.model_name) # try to get redis's result first
     # Why not input str(tokens) as key?
     # Because unicode like \xe could become \\xe in str(), which is hard to recover later.
     if redis_result == None:
@@ -148,8 +148,8 @@ def main():
         redis_val_string = ''
         for item in result:
             redis_val_string = redis_val_string + item + ' '
-        redis_connect.hset(redis_key_string, args.model_name, redis_val_string) 
-        redis_connect.expire(redis_key_string, 600) # key expires after 10 minutes
+        red0.hset(redis_key_string, args.model_name, redis_val_string) 
+        red0.expire(redis_key_string, 600) # key expires after 10 minutes
     else: # change string like , into list
         result = redis_result.split() # turn sentences into lists 
     results.append(result)

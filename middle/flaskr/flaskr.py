@@ -92,9 +92,10 @@ def logout():
 if __name__=='__main__':
     redis_host = 'localhost'
     redis_port = 6379
-    redis_connect = redis.Redis(host=redis_host, port=redis_port)
-    # redis_connect.set('web_user_id', 1000) # starting from 1000, to 9999
-    # redis_connect.set('bat_user_id', 1000) # starting from 1000, to 9999
+    red0 = redis.Redis(host=redis_host, port=redis_port, db=0) # for hash caching
+    red1 = redis.Redis(host=redis_host, port=redis_port, db=1) # for message queue
+    # red1.set('web_user_id', 1000) # starting from 1000, to 9999
+    # red1.set('bat_user_id', 1000) # starting from 1000, to 9999
     # call('python web_client_serving.py', shell=True) # run two queries in parallel
     # call('python bat_client_serving.py', shell=True)
     app.run()
