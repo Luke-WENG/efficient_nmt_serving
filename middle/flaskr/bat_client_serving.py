@@ -51,7 +51,7 @@ def translate(stub, model_name, tokens, timeout=5.0):
 
 def bat_client_serving():
     #: batch_size: process cycle for each batch user
-    args_batch_size = 60
+    args_batch_size = 50
     args_model_name = "aver_ende"
     args_host = "localhost"
     args_tf_port= 9000

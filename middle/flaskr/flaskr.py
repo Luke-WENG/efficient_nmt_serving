@@ -98,4 +98,4 @@ if __name__=='__main__':
     # red1.set('bat_user_id', 1000) # starting from 1000, to 9999
     # call('python web_client_serving.py', shell=True) # run two queries in parallel
     # call('python bat_client_serving.py', shell=True)
-    app.run()
+    app.run(host="0.0.0.0", port=5000)
