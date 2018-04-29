@@ -121,6 +121,7 @@ def bat_client_serving():
                     future = translate(stub, args_model_name, tokens, timeout=args_timeout)
                     futures.append(future)
                 
+                translate_index = 0
                 for tokens, future in zip(batch_tokens, futures):
                     result_tokens = parse_translation_result(future.result())
                     #: get results from tensorflow serving
@@ -130,7 +131,10 @@ def bat_client_serving():
                     red0.hset(query, args_model_name, result) # cache result
                     red0.expire(query, 1200) # key expires after 20 minutes
                     red1.rpush(tgt_list_id, result) # return to users
-                    print(tgt_list_id + '||' + result + "|| Latency: " + str(time.time() - tf_start_time))
+                    print(tgt_list_id + ' ' + str(translate_index) \
+                          + ' || ' + result[0] + "... || Latency: " \
+                          + str(time.time() - tf_start_time))
+                    translate_index += 1
             print("Well served: "+user_to_serve)
         except:
             red1.lpush('bat_user_list', user_to_serve)

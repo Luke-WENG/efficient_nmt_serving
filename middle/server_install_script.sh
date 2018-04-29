@@ -1,4 +1,4 @@
-sudo pip install tensorflow, tensorflow-serving-api, Flask=1.0, redis, schedule
+sudo pip install tensorflow tensorflow-serving-api redis Flask
 
 # redis install
 wget http://download.redis.io/redis-stable.tar.gz
@@ -6,9 +6,6 @@ tar xvzf redis-stable.tar.gz
 cd redis-stable
 make
 make test
-sudo cp src/redis-server /usr/local/bin/
-sudo cp src/redis-cli /usr/local/bin/
-
 ## if test pass, ignore the latter
 ## <ignore>
 wget http://downloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz
@@ -18,6 +15,9 @@ sudo ./configure
 sudo make
 sudo make install 
 ## </ignore>
+sudo cp src/redis-server /usr/local/bin/
+sudo cp src/redis-cli /usr/local/bin/
+
 
 # Flask
 cd flaskr

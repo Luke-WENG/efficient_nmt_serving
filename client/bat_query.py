@@ -64,7 +64,7 @@ def main():
                       help="target text file path: ../data/???, default: 10-tgt-test.txt")
   args = parser.parse_args()
 
-  redis_pool = redis.ConnectionPool(host=args_host, port=args_redis_port, db=1) # for message queue
+  redis_pool = redis.ConnectionPool(host=args.host, port=args.redis_port, db=1) # for message queue
   red1 = redis.Redis(connection_pool=redis_pool)
   
   project_start_time = time.time()
