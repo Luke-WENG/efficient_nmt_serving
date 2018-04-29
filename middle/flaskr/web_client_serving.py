@@ -64,12 +64,30 @@ def web_client_serving():
     # TensorFlow Serving
     channel = implementations.insecure_channel(args_host, args_tf_port)
     stub = prediction_service_pb2.beta_create_PredictionService_stub(channel)
+    # Fast Execution
+    fast_execution = 0
+    fast_model_name = "toy_ende"
+    fast_timeout = 100000
     # Looping User Serving
     while True:
         try:
-            print("Waiting for new users ...")
-            user_to_serve = red1.blpop('web_user_list')[1] # pick the first user, if none then wait
-            print("Serving: "+user_to_serve)
+            if red1.get("timeout_exist"):
+                print("Fast Execution for Timeout user !")
+                fast_execution = 1
+                user_to_serve = red1.lpop("timeout_user_list")
+                if user_to_serve == None:
+                    print("Well.. False Alarm. No user there.")
+                    fast_execution = 0
+                    red1.delete("timeout_exist")
+                    print("Waiting for new users ...")
+                    while not red1.get("timeout_exist"):
+                        user_to_serve = red1.blpop('web_user_list', 100)[1] # pick the first user, if none then wait
+                    print("Serving: "+user_to_serve)
+            else:
+                print("Waiting for new users ...")
+                while not red1.get("timeout_exist"):
+                    user_to_serve = red1.blpop('web_user_list', 100)[1] # pick the first user, if none then wait
+                print("Serving: "+user_to_serve)
             src_list_id = user_to_serve + "_src" # e.g. "web_1_src"
             tgt_list_id = user_to_serve + "_tgt" # e.g. "web_1_tgt"
 
@@ -108,8 +126,12 @@ def web_client_serving():
                 for tokens in batch_tokens:
                     if 0 == len(tokens):
                         continue
-                    future = translate(stub, args_model_name, tokens, timeout=args_timeout)
-                    futures.append(future)
+                    if fast_execution:
+                        future = translate(stub, fast_model_name, tokens, timeout=fast_timeout)
+                        futures.append(future)
+                    else:
+                        future = translate(stub, args_model_name, tokens, timeout=args_timeout)
+                        futures.append(future)
                 
                 for tokens, future in zip(batch_tokens, futures):
                     result_tokens = parse_translation_result(future.result())
@@ -117,14 +139,20 @@ def web_client_serving():
                     #: result_tokens = ["Hallo", "Welt", "!"]
                     query = ' '.join(tokens)
                     result = ' '.join(result_tokens)
-                    red0.hset(query, args_model_name, result) # cache result
-                    red0.expire(query, 1200) # key expires after 20 minutes
+                    if not fast_execution: # only store full execution
+                        red0.hset(query, args_model_name, result) # cache result
+                        red0.expire(query, 1200) # key expires after 20 minutes
                     red1.rpush(tgt_list_id, result) # return to users
-                    print(tgt_list_id + '||' + result + "|| Latency: " + str(time.time() - tf_start_time))
+                    if not fast_execution:
+                        print(tgt_list_id + '||' + result + "|| Latency: " + str(time.time() - tf_start_time))
+                    else:
+                        print("Fast Execution "+tgt_list_id + '||' + result + "|| Latency: " + str(time.time() - tf_start_time))
+                        fast_execution = 0
+                        red1.delete("timeout_exist")
             print("Well served: "+user_to_serve)
         except:
             red1.lpush('web_user_list', user_to_serve)
-            print("Fail to serve: "+user_to_serve)
+            print("Fail to serve: "+ str(user_to_serve))
 
 
 

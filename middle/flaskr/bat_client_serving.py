@@ -25,6 +25,7 @@ def parse_translation_result(result):
 
   return best_hypothesis[0:best_length - 1] # Ignore </s>
 
+
 def translate(stub, model_name, tokens, timeout=5.0):
   """Translates a sequence of tokens.
 
@@ -47,6 +48,16 @@ def translate(stub, model_name, tokens, timeout=5.0):
       tf.make_tensor_proto([length], shape=(1,)))
 
   return stub.Predict.future(request, timeout)
+
+
+def check_timeout():
+    patience = 10
+    while red1.get("timeout_exist"):
+        print("Timeout exists. Halting for 10 sec")
+        patience -= 1
+        time.sleep(10)
+        if patience <= 0:
+            break
 
 
 def bat_client_serving():
@@ -120,9 +131,10 @@ def bat_client_serving():
                         continue
                     future = translate(stub, args_model_name, tokens, timeout=args_timeout)
                     futures.append(future)
-                
+
                 translate_index = 0
-                for tokens, future in zip(batch_tokens, futures):
+                for tokens, future in zip(batch_tokens, futures):   
+                    check_timeout()
                     result_tokens = parse_translation_result(future.result())
                     #: get results from tensorflow serving
                     #: result_tokens = ["Hallo", "Welt", "!"]

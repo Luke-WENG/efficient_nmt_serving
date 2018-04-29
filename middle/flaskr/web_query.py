@@ -53,10 +53,14 @@ def web_query(query):
         result = red1.blpop(tgt_list_id, args_timeout)
         if result == None:
             # print "==Error:TimeOut=="
-            results.append(" ")
-        else:
-            # print result[1]
-            results.append(result[1]) # the str value
+            waiting_in_queue = red1.lrem("web_user_list", 0, user) # check whether user is still in queue
+            if waiting_in_queue:
+              red1.rpush('timeout_user_list', user) # add to timeout_user_list, let web serving execute swiftly
+              red1.set("timeout_exist", 1) # mark as timeout, let batch serving halt
+              result = red1.blpop(tgt_list_id, 100000) # wait until results
+            else: # already under processing
+              result = red1.blpop(tgt_list_id, 100000) # wait until results
+        results.append(result[1]) # the str value
 
     output = '\n'.join(results)
     #: remove the first user named as var `user` from 'web_user_list'
