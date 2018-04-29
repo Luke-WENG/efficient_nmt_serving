@@ -69,10 +69,11 @@ def candidates_from_file(file_name):
     tokens = []
     with open(file_name, 'r') as f:
         for lines in f:
+            print(lines)
             token = lines.split(' ')
             if '\n' in token[-1]:
                 token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
-                tokens.append(token)
+            tokens.append(token)
     return tokens
 
 def references_from_file(file_name):
@@ -84,14 +85,15 @@ def references_from_file(file_name):
     Returns:
       A list of list of tokens
     """
-    tokens = []
+    refers = []
     with open(file_name, 'r') as f:
         for lines in f:
-            token = lines.split(' ')
-            if '\n' in token[-1]:
-                token[-1] = token[-1][:-1] # remove '\n' in the end of sentence
-                tokens.append([token])
-    return tokens
+            print(lines)
+            refer = lines.split(' ')
+            if '\n' in refer[-1]:
+                refer[-1] = refer[-1][:-1] # remove '\n' in the end of sentence
+            refers.append([refer])
+    return refers
 
 def main():
   parser = argparse.ArgumentParser(description="Translation client example")
@@ -132,6 +134,7 @@ def main():
   for tokens, future in zip(batch_tokens, futures):
         query_start_time = time.time()
         result = parse_translation_result(future.result())
+        # result = tokens[:] #: for testing
         results.append(result)
         print("{} \n=> {}".format(" ".join(tokens), " ".join(result)))
         print("### Latency: %.4f ms" % ((time.time()-query_start_time)*1000))
