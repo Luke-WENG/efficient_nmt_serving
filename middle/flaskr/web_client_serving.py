@@ -61,63 +61,69 @@ def web_client_serving():
 	# Redis
 	redis_connect = redis.Redis(host=args_host, port=args_redis_port)
 	# TensorFlow Serving
-	channel = implementations.insecure_channel(args.host, args.port)
+	channel = implementations.insecure_channel(args_host, args_tf_port)
 	stub = prediction_service_pb2.beta_create_PredictionService_stub(channel)
 	# Looping User Serving
 	while True:
-		print("Waiting for new users ...")
-		user_to_serve = redis_connect.blpop('web_user_list')[1] # pick the first user, if none then wait
-		print("Serving: "+user_to_serve)
-		src_list_id = user_to_serve + "_src" # e.g. "web_1_src"
-		tgt_list_id = user_to_serve + "_tgt" # e.g. "tgt_1_src"
+		try:
+			print("Waiting for new users ...")
+			user_to_serve = redis_connect.blpop('web_user_list')[1] # pick the first user, if none then wait
+			print("Serving: "+user_to_serve)
+			src_list_id = user_to_serve + "_src" # e.g. "web_1_src"
+			tgt_list_id = user_to_serve + "_tgt" # e.g. "web_1_tgt"
 
-		#: retrieve all queries of this user
-		queries = redis_connect.lrange(src_list_id, 0, -1)
-		#: try caching first
-		length_of_queries = len(queries)
-		queries_for_loop = queries[:]
-		for item in queries_for_loop:
-			# print(str(length_of_queries)+repr(item))
-			result = redis_connect.hget(item, args_model_name)
-			if result == None:
-				# print(str(length_of_queries))
-				break
-				# no hope, go to TensorFlow Serving :(
-			else:
-				redis_connect.rpush(tgt_list_id, result) # for users to retrieve from list
-				queries.remove(item)
-				length_of_queries = length_of_queries - 1
+			#: retrieve all queries of this user
+			queries = redis_connect.lrange(src_list_id, 0, -1)
+			#: try caching first
+			length_of_queries = len(queries)
+			queries_for_loop = queries[:]
+			for item in queries_for_loop:
+				# print(str(length_of_queries)+repr(item))
+				result = redis_connect.hget(item, args_model_name)
+				if result == None:
+					# print(str(length_of_queries))
+					break
+					# no hope, go to TensorFlow Serving :(
+				else:
+					redis_connect.rpush(tgt_list_id, result) # for users to retrieve from list
+					queries.remove(item)
+					length_of_queries = length_of_queries - 1
 
-		if length_of_queries > 0:
-			batch_tokens = []
-			for query in queries:
-				batch_token = [str(item) for item in query.split()]
-				batch_tokens.append(batch_token)
-				# redis_connect.rpush(tgt_list_id, str(batch_token)) # too good to be true :)
-			
-			# batch_tokens = [
-			#     ["Hello", "world", "!"],
-			#     ["My", "name", "is", "John", "."],
-			#     ["I", "live", "on", "the", "West", "coast", "."]]
+			if length_of_queries > 0:
+				batch_tokens = []
+				for query in queries:
+					batch_token = [str(item) for item in query.split()]
+					batch_tokens.append(batch_token)
+					# redis_connect.rpush(tgt_list_id, str(batch_token)) # too good to be true :)
+				
+				# batch_tokens = [
+				#     ["Hello", "world", "!"],
+				#     ["My", "name", "is", "John", "."],
+				#     ["I", "live", "on", "the", "West", "coast", "."]]
 
-			#: ready for TensorFlow Serving
-			tf_start_time = time.time()
-			futures = []
-			for tokens in batch_tokens:
-				future = translate(stub, args_model_name, tokens, timeout=args_timeout)
-				futures.append(future)
-			
-			for tokens, future in zip(batch_tokens, futures):
-				result_tokens = parse_translation_result(future.result())
-				#: get results from tensorflow serving
-				#: result_tokens = ["Hallo", "Welt", "!"]
-				query = ' '.join(tokens)
-				result = ' '.join(result)
-				redis_connect.hset(query, args_model_name, result) # cache result
-				redis_connect.expire(query, 1200) # key expires after 20 minutes
-				redis_connect.rpush(tgt_list_id, result) # return to users
-				print(tgt_list_id + '||' + result + "|| Latency: " + str(time.time() - tf_start_time))
-		print("Well served: "+user_to_serve)
+				#: ready for TensorFlow Serving
+				tf_start_time = time.time()
+				futures = []
+				for tokens in batch_tokens:
+					if 0 == len(tokens):
+						continue
+					future = translate(stub, args_model_name, tokens, timeout=args_timeout)
+					futures.append(future)
+				
+				for tokens, future in zip(batch_tokens, futures):
+					result_tokens = parse_translation_result(future.result())
+					#: get results from tensorflow serving
+					#: result_tokens = ["Hallo", "Welt", "!"]
+					query = ' '.join(tokens)
+					result = ' '.join(result_tokens)
+					redis_connect.hset(query, args_model_name, result) # cache result
+					redis_connect.expire(query, 1200) # key expires after 20 minutes
+					redis_connect.rpush(tgt_list_id, result) # return to users
+					print(tgt_list_id + '||' + result + "|| Latency: " + str(time.time() - tf_start_time))
+			print("Well served: "+user_to_serve)
+		except:
+			redis_connect.lpush('web_user_list', user_to_serve)
+			print("Fail to serve: "+user_to_serve)
 
 
 

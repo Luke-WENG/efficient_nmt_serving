@@ -20,8 +20,8 @@ def web_query(query):
     results = []
     tokens = query.split('\r\n') # the '\r' here is important, otherwise the cache won't match.
     length_to_query = len(tokens)
-    if length_to_query > 20:
-      raise ValueError("Too much sentences in one query. Switch to batching processing")
+    if length_to_query > 100:
+      return "<Too much sentences in one query. Please switch to batching processing>"
       # TODO: batch processing
     # check the cache first
     tokens_for_loop = tokens[:]
